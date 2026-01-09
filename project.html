@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - BODS INFRA TECH SOLUTION</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* BASIC STYLE */
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION BAR */
+        .navbar {
+            background-color: white;
+            /* White background for navigation */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(247, 243, 243, 0.1);
+            /* Softer shadow */
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 40px;
+            /* Adjust logo size as needed */
+            margin-right: 10px;
+        }
+
+        .navbar-logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff8c00;
+            /* Orange color for the logo text */
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            margin-left: 25px;
+        }
+
+        .nav-link {
+            color: #f3eded;
+            /* Darker text for white background */
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ff8c00;
+        }
+
+        /* HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            /* Hidden by default on desktop */
+            cursor: pointer;
+            font-size: 1.8rem;
+            /* Slightly larger icon */
+            color: #4d4c4c;
+            /* Dark color for the icon */
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+
+            /* Mobile Navigation Styles */
+            .hamburger {
+                display: block;
+                /* Show hamburger on mobile */
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                /* Below the nav bar */
+                left: 0;
+                background-color: white;
+                /* White background for mobile menu */
+                border-top: 1px solid #eee;
+                /* Light border */
+                text-align: center;
+                padding: 10px 0;
+                box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+                /* Shadow for dropdown */
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-item {
+                margin: 10px 0;
+            }
+
+            .nav-link {
+                padding: 10px 0;
+                display: block;
+                color: #fffdfd;
+                /* Dark text on white background */
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+
+            .section-2 {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .collab-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slideshow-container {
+                max-width: 100%;
+            }
+
+            iframe {
+                height: 250px;
+            }
+        }
+
+        @media (min-width: 700px) {
+            .section-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img1.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        header img {
+            width: 80px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin: 5px 0;
+            font-weight: 300;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+            transform: translateY(-2px);
+        }
+
+        /* SOCIAL BUTTONS */
+        .social-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .social-buttons a {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp {
+            background: #25D366;
+        }
+
+        .facebook {
+            background: #3b5998;
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, #C13584, #E1306C, #F56040);
+        }
+
+        .linkedin {
+            background: #0077b5;
+        }
+
+        .twitter {
+            background: #1da1f2;
+        }
+
+        .social-buttons a:hover {
+            transform: scale(1.1);
+        }
+
+        /* PROJECTS SECTION */
+        .projects-section {
+            padding: 40px 20px;
+            text-align: center;
+            background: white;
+        }
+
+        .projects-section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            text-align: left;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            color: #ff8c00;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .project-card p {
+            margin-bottom: 10px;
+        }
+
+        .project-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .project-card ul li {
+            margin-bottom: 5px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .project-card ul li::before {
+            content: "•";
+            color: #ff8c00;
+            position: absolute;
+            left: 0;
+        }
+
+        button {
+            background: linear-gradient(45deg, #ff8c00, #ff6b35);
+            border: none;
+            padding: 12px 25px;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 140, 0, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 140, 0, 0.4);
+        }
+
+        /* SLIDER */
+        .slideshow-container {
+            max-width: 800px;
+            position: relative;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        .slide {
+            display: none;
+        }
+
+        .fade {
+            animation: fadeEffect 1.5s;
+        }
+
+        @keyframes fadeEffect {
+            from {
+                opacity: 0.4;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .dot-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            display: inline-block;
+            background-color: #bbb;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .active {
+            background-color: #fcfcfc;
+        }
+
+        /* CONTACT */
+        #contact {
+            padding: 40px 20px;
+            text-align: center;
+            background: white;
+        }
+
+        #contact h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #contact p {
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+
+        #contact button {
+            background: linear-gradient(45deg, #ff8c00, #ff6b35);
+            border: none;
+            padding: 12px 25px;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav ul li a {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slideshow-container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="logo.png" alt="BODS INFRA Logo">
+            <a href="index.html">A2ZTechProperty </a>
+        </div>
+         <ul class="nav-menu" id="navMenu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="owr-Property.html" class="nav-link">Property</a></li>
+            <li class="nav-item"><a href="agent-registration.html" class="nav-link">Agent</a></li>
+            <!----
+            <li class="nav-item"><a href="service.html" class="nav-link">Services</a></li>            
+            <li class="nav-item"><a href="meterials.html" class="nav-link">Meterial</a></li>
+            <li class="nav-item"><a href="technical-vehicals.html" class="nav-link">Technical Vehicles</a></li>
+---->
+            <li class="nav-item"><a href="investors.html" class="nav-link">Investors</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- SOCIAL BUTTONS -->
+    <div class="social-buttons">
+        <a href="https://wa.me/+918847806339" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://facebook.com" class="facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://twitter.com" class="twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+
+
+    <!-- PROJECTS SECTION -->
+    <section class="projects-section">
+        <h2>Our Projects</h2>
+
+        <!-- SLIDESHOW -->
+        <div class="slideshow-container">
+            <div class="slide fade"><img src="p1.jpeg" alt="Project 1"></div>
+            <div class="slide fade"><img src="p2.jpeg" alt="Project 2"></div>
+            <div class="slide fade"><img src="p3.jpeg" alt="Project 3"></div>
+        </div>
+        <div class="dot-container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+
+        <!-- PROJECT DETAILS -->
+        <div class="project-grid">
+            <div class="project-card">
+                <img src="p1.jpeg" alt="Residential Complex in Rourkela">
+                <h3>Residential Complex in Rourkela</h3>
+                <p><strong>Location:</strong> Rourkela, Odisha</p>
+                <p><strong>Status:</strong> Completed</p>
+                <p>This modern residential project features 50+ apartments with state-of-the-art amenities, designed for
+                    comfortable living in the heart of the city.</p>
+                <ul>
+                    <li>Spacious 2BHK and 3BHK units</li>
+                    <li>24/7 security and parking</li>
+                    <li>Gym, swimming pool, and playground</li>
+                    <li>Eco-friendly construction</li>
+                </ul>
+                <a
+                    href="https://wa.me/+918847806339?text=I%20am%20interested%20in%20Residential%20Complex%20in%20Rourkela"><button>Learn
+                        More</button></a>
+            </div>
+            <div class="project-card">
+                <img src="p2.jpeg" alt="Commercial Building in Bhubaneswar">
+                <h3>Commercial Building in Bhubaneswar</h3>
+                <p><strong>Location:</strong> Bhubaneswar, Odisha</p>
+                <p><strong>Status:</strong> Ongoing</p>
+                <p>A premium commercial space catering to businesses, with flexible office layouts and modern
+                    infrastructure to support growing enterprises.</p>
+                <ul>
+                    <li>High-speed internet and utilities</li>
+                    <li>Conference rooms and co-working spaces</li>
+                    <li>Central location with easy access</li>
+                    <li>Sustainable design elements</li>
+                </ul>
+                <a
+                    href="https://wa.me/+918847806339?text=I%20am%20interested%20in%20Commercial%20Building%20in%20Bhubaneswar"><button>Learn
+                        More</button></a>
+            </div>
+            <div class="project-card">
+                <img src="p3.jpeg" alt="Villa Project in Cuttack">
+                <h3>Villa Project in Cuttack</h3>
+                <p><strong>Location:</strong> Cuttack, Odisha</p>
+                <p><strong>Status:</strong> Completed</p>
+                <p>Luxurious villas with private gardens, offering a serene lifestyle amidst nature, perfect for
+                    families seeking exclusivity and comfort.</p>
+                <ul>
+                    <li>Customizable villa designs</li>
+                    <li>Landscaped gardens and private pools</li>
+                    <li>Smart home features</li>
+                    <li>Proximity to schools and shopping centers</li>
+                </ul>
+                <a href="https://wa.me/+918847806339?text=I%20am%20interested%20in%20Villa%20Project%20in%20Cuttack"><button>Learn
+                        More</button></a>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(showSlides, 3000);
+        }
+
+        function currentSlide(n) {
+            slideIndex = n - 1;
+            showSlides();
+        }
+
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+
+    </script>
+
+    <footer>
+        © 2024 BODS INFRATECH PRIVATE LIMITED. All rights reserved.
+    </footer>
+</body>
+
+</html>

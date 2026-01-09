@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Residential Property Seller Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef1f4;
+            padding: 22px;
+        }
+
+        .form-box {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            padding: 28px;
+            border-radius: 14px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 11px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #0a6b3c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            margin-top: 25px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #084f2d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-box">
+        <h2>Residential Property Seller Form</h2>
+        <form id="residential-property-seller-form" method="post"
+            action="https://script.google.com/macros/s/AKfycbzjiT12tevLVTFU-Jsn3XTFIDQIeAvR89nhkYEn8WKL3JBjaLUI2wai0jrAu5eqnklz/exec">
+            <!-- Your existing form fields here (unchanged) -->
+            <label>Owner Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+
+            <label>Mobile Number</label>
+            <input type="tel" id="number" name="number" placeholder="Enter mobile number" required />
+
+            <label>Alternate Mobile (Optional)</label>
+            <input type="tel" id="altNumber" name="altNumber" placeholder="Alternate contact" />
+
+            <label for="pType">Property Type</label>
+            <select id="pType" name="pType" required onchange="showPTypeOther()">
+                <option value="">Select</option>
+                <option>House</option>
+                <option>Flat / Apartment</option>
+                <option>Independent Duplex</option>
+                <option>Villa</option>
+                <option>Residential Plot</option>
+                <option value="other">Other (Specify)</option>
+            </select>
+            <input type="text" id="pTypeOther" name="pTypeOther" placeholder="Please specify property type"
+                style="display:none; margin-top:8px;">
+
+            <script>
+                function showPTypeOther() {
+                    const select = document.getElementById("pType");
+                    const input = document.getElementById("pTypeOther");
+                    if (select.value === "other") {
+                        input.style.display = "block";
+                        input.required = true;
+                    } else {
+                        input.style.display = "none";
+                        input.required = false;
+                        input.value = "";
+                    }
+                }
+            </script>
+
+            <!-- Continue with the rest of your fields (pLocation, area, etc.) -->
+            <label>Property Location</label>
+            <input type="text" id="pLocation" name="pLocation" placeholder="Area / Landmark / City" required />
+
+            <label>Land/Plot Area (Sqft)</label>
+            <input type="text" id="area" name="area" placeholder="Example: 1500 sqft" />
+
+            <label>Construction Area (If Applicable)</label>
+            <input type="text" id="constArea" name="constArea" placeholder="Example: 1200 sqft (Built-up)" />
+
+            <label>No. of Bedrooms (BHK)</label>
+            <select id="noOfBedroom" name="noOfBedroom" required>
+                <option>1 BHK</option>
+                <option>2 BHK</option>
+                <option>3 BHK</option>
+                <option>4+ BHK</option>
+                <option>Not Applicable (Plot)</option>
+            </select>
+
+            <label>Floor Details (For Apartment)</label>
+            <input type="text" id="floorDetails" name="floorDetails" placeholder="Example: 3rd Floor, Lift Available" />
+
+            <label>Expected Selling Price (₹)</label>
+            <input type="text" id="esp" name="esp" placeholder="Example: ₹45 Lakh" required />
+
+            <label>Property Age</label>
+            <select id="propertyAge" name="propertyAge" required>
+                <option>New</option>
+                <option>1-5 Years</option>
+                <option>5-10 Years</option>
+                <option>10+ Years</option>
+                <option>Under Construction</option>
+            </select>
+
+            <label>Property Ownership</label>
+            <select id="ownership" name="ownership" required>
+                <option>Self Owned</option>
+                <option>Family Owned</option>
+                <option>Joint Property</option>
+            </select>
+
+            <label>Amenities (Optional)</label>
+            <textarea rows="3" id="Amenities" name="Amenities"
+                placeholder="Parking, Road width, Borewell, Boundary, etc."></textarea>
+
+            <!-- Legal & Documentation Section -->
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-file-contract mr-2 text-orange-600"></i> Legal & Documentation
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="input-icon">
+                        <i class="fas fa-file-alt"></i>
+                        <select name="khataType" id="khataType"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required onchange="showKhataOther()">
+                            <option value="">Khata Type</option>
+                            <option value="Sabik">Sabik</option>
+                            <option value="Hal">Hal</option>
+                            <option value="Kisam">Kisam</option>
+                            <option value="other">Other (Specify)</option>
+                        </select>
+                        <input type="text" id="khataOther" name="khataOther" placeholder="Please specify Khata Type"
+                            class="w-full border border-gray-300 p-3 rounded-lg mt-2" style="display:none;">
+                        <script>
+                            function showKhataOther() {
+                                const select = document.getElementById("khataType");
+                                const input = document.getElementById("khataOther");
+                                if (select.value === "other") {
+                                    input.style.display = "block";
+                                    input.required = true;
+                                } else {
+                                    input.style.display = "none";
+                                    input.required = false;
+                                    input.value = "";
+                                }
+                            }
+                        </script>
+                    </div>
+                    <div class="input-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                        <input type="text" id="Khatanumber" name="Khatanumber"
+                            placeholder="Khata Number(e.g., 1200, 3400)"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required />
+                    </div>
+                    <div class="input-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                        <input type="text" id="plotNumber" name="plotNumber" placeholder="Plot Number (e.g., B1, C2 )"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required />
+                    </div>
+                    <div class="input-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                        <select id="Religious" name="Religious"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required>
+                            <option value="">Religious Restriction?</option>
+                            <option value="Hindu">Hindu</option>
+                            <option value="Muslim">Muslim</option>
+                            <option value="Sikh">Sikh</option>
+                            <option value="Christian">Christian</option>
+                            <option value="Buddh">Buddh</option>
+                            <option value="Jain">Jain</option>
+                        </select>
+                    </div>
+                    <div class="input-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                        <select id="Cast" name="Cast"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required>
+                            <option value="">Caste Restriction?</option>
+                            <option value="General">General</option>
+                            <option value="OBC (Other Backward Classes)">OBC (Other Backward Classes)</option>
+                            <option value="SC (Scheduled Cast)">SC (Scheduled Cast)</option>
+                            <option value="ST(Scheduled Type)">ST (Scheduled Type)</option>
+                        </select>
+                    </div>
+                    <div class="input-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                        <select id="mutation" name="mutation"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required>
+                            <option value="">Mutation Done?</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="input-icon">
+                        <i class="fas fa-border-all"></i>
+                        <select id="boundary" name="boundary"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required>
+                            <option value="">Boundary Wall?</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <label>Any Additional Details</label>
+            <textarea rows="4" id="AdditionalDetails" name="AdditionalDetails"
+                placeholder="Facing, Vaastu compliance, condition, loan status, etc."></textarea>
+
+            <button type="submit" id="submitBtn">Submit Property</button>
+            <p id="successMsg" style="color: green; font-weight: bold; margin-top: 15px;"></p>
+            <p id="errorMsg" style="color: red; font-weight: bold; margin-top: 15px;"></p>
+        </form>
+
+        <script>
+            // Handle form submission asynchronously
+            document.getElementById('residential-property-seller-form').addEventListener('submit', function (e) {
+                e.preventDefault();  // Prevent default form submission
+                const form = e.target;
+                const formData = new FormData(form);
+                const submitBtn = document.getElementById('submitBtn');
+                const successMsg = document.getElementById('successMsg');
+                const errorMsg = document.getElementById('errorMsg');
+
+                // Disable button and show loading
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+                successMsg.textContent = '';
+                errorMsg.textContent = '';
+
+                // Submit via fetch
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            successMsg.textContent = 'Property submitted successfully!';
+                            form.reset();  // Clear the form
+                        } else {
+                            errorMsg.textContent = 'Error: ' + data.message;
+                        }
+                    })
+                    .catch(error => {
+                        errorMsg.textContent = 'Submission failed. Please try again.';
+                    })
+                    .finally(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Submit Property';
+                    });
+            });
+        </script>
+    </div>
+
+</body>
+
+</html>
+<!---done-->

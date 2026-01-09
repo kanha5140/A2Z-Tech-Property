@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent for Buyer Registration Form</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef3f7;
+      padding: 25px;
+    }
+
+    .form-box {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 25px;
+      background: #0066ff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #004ecc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="form-box">
+    <h2>Agent Registration – For Buyer (Purchaser)</h2>
+    <form id="agentRegistrationForm" action="" method="POST">
+      <label>Agent Full Name</label>
+      <input type="text" id="fullName" name="fullName" placeholder="Enter full name" required>
+
+      <label>Mobile Number</label>
+      <input type="tel" id="mobile" name="mobile" maxlength="12" placeholder="Enter mobile number" required>
+
+      <label>Email (Optional)</label>
+      <input type="email" id="email" name="email" placeholder="Enter email">
+
+      <label>Aadhar Number (Last 4 digits only)</label>
+      <input type="text" id="Aadhar" name="Aadhar" maxlength="12" placeholder="xxxx-xxxx-x123" required>
+
+      <label>GST Number (If applicable)</label>
+      <input type="text" id="gstNumber" name="gstNumber" placeholder="Enter GST Number">
+
+      <label>Agent Type</label>
+      <select id="agentType" name="agentType" required>
+        <option value="">Select</option>
+        <option>Individual Agent</option>
+        <option>Brokerage Firm</option>
+        <option>Real Estate Consultant</option>
+        <option>Channel Partner</option>
+      </select>
+
+      <label>Experience Level</label>
+      <select id="Experience" name="Experience" required>
+        <option>New (0-1 Year)</option>
+        <option>Experienced (1-5 Years)</option>
+        <option>Senior (5+ Years)</option>
+      </select>
+
+
+      <label>Buyer Category You Handle</label>
+      <select id="buyerCategory" name="buyerCategory" required>
+        <option>Residential Buyer</option>
+        <option>Commercial Buyer</option>
+        <option>Industrial Buyer</option>
+        <option>Farm Land / Agriculture Buyer</option>
+        <option>Farm House Buyer</option>
+        <option>All Categories</option>
+      </select>
+
+      <label>Preferred Working Location</label>
+      <input type="text" id="workLocation" name="workLocation" placeholder="City / Area / District" required>
+
+      <label>Do you currently have any active buyer clients?</label>
+      <select id="buyerOnHand" name="buyerOnHand" required>
+        <option>No</option>
+        <option>Yes – Residential</option>
+        <option>Yes – Commercial</option>
+        <option>Yes – Industrial</option>
+        <option>Yes – Agriculture</option>
+        <option>Yes – Farm House</option>
+      </select>
+
+      <label>If Yes, Provide Buyer Requirements</label>
+      <textarea rows="3" id="buyerOnHanddetails" name="buyerOnHanddetails"
+        placeholder="Budget, Size, Location, Purpose, etc."></textarea>
+
+      <label>Your Expected Commission from Buyer</label>
+      <select id="expectedCommission" name="expectedCommission" required>
+        <option>0.5%</option>
+        <option>1%</option>
+        <option>1.5%</option>
+        <option>2%</option>
+        <option>As per mutual agreement</option>
+      </select>
+
+      <label>Are you ready to follow A2ZTechProperty legal guidelines?</label>
+      <select id="legalGuidline" name="legalGuidline" required>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+
+
+      <label>Do you have an Agent Reference Number?</label>
+      <select id="refSelect" name="refSelect" onchange="toggleRefInput()">
+        <option value="">Select</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <input type="text" id="refNumber" name="refNumber" placeholder="Enter Agent Reference Number"
+        style="display:none; margin-top:8px;">
+
+      <script>
+        // Existing script to show/hide reference number input
+        function toggleRefInput() {
+          const select = document.getElementById("refSelect");
+          const input = document.getElementById("refNumber");
+
+          if (select.value === "yes") {
+            input.style.display = "block";
+            input.required = true;
+          } else {
+            input.style.display = "none";
+            input.required = false;
+            input.value = "";
+          }
+        }
+      </script>
+
+      <label>How Did You Hear About Us?</label>
+      <select id="hearAboutUs" name="hearAboutUs">
+        <option>WhatsApp</option>
+        <option>Google</option>
+        <option>Facebook</option>
+        <option>Instagram</option>
+        <option>Referral</option>
+        <option>Other</option>
+      </select>
+
+      <button type="submit">Submit Registration</button>
+    </form>
+
+    <div id="formStatus" style="margin-top: 20px; font-weight: bold;"></div>
+
+    <script>
+      // ** IMPORTANT: REPLACE THE URL BELOW WITH YOUR DEPLOYED APPS SCRIPT WEB APP URL **
+      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz1XUveLNxcyhCYLJaI4H5AE1ebY_Gerk7L2CoPKxjhQwXMmqUDEUm-TfHueYgFE2At/exec';
+
+      const form = document.getElementById('agentRegistrationForm');
+      const statusDiv = document.getElementById('formStatus');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault(); // Stop the form from submitting the traditional way
+        statusDiv.textContent = 'Submitting...';
+        statusDiv.style.color = 'blue';
+        const submitButton = form.querySelector('button[type="submit"]');
+        submitButton.disabled = true; // Disable button to prevent multiple submissions
+
+        // Create FormData object from the form
+        const formData = new FormData(form);
+
+        // Convert FormData to URLSearchParams for submission to Apps Script
+        // This is the format the Apps Script `doPost(e)` function expects
+        const urlEncodedData = new URLSearchParams(formData).toString();
+
+        fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'cors', // Essential for cross-origin requests
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: urlEncodedData
+        })
+          .then(response => {
+            // Apps Script returns a JSON text output
+            return response.json();
+          })
+          .then(data => {
+            submitButton.disabled = false; // Re-enable button
+            if (data.result === 'success') {
+              statusDiv.textContent = '✅ ' + data.message;
+              statusDiv.style.color = 'green';
+              form.reset(); // Clear the form on successful submission
+              document.getElementById("refNumber").style.display = "none"; // Hide ref input after reset
+            } else {
+              statusDiv.textContent = '❌ Submission Error: ' + data.message;
+              statusDiv.style.color = 'red';
+            }
+          })
+          .catch(error => {
+            submitButton.disabled = false; // Re-enable button
+            statusDiv.textContent = '❌ Network Error: Could not connect to the server.';
+            statusDiv.style.color = 'red';
+            console.error('Fetch error:', error);
+          });
+      });
+    </script>
+  </div>
+
+</body>
+
+</html>

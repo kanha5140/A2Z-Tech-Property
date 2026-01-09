@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Vehicles Vendor/Owner Registration</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f7f7f7;
+            padding: 20px;
+        }
+
+        .form-box {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            margin-top: 25px;
+            width: 100%;
+            padding: 15px;
+            background: #0072ff;
+            color: white;
+            border: none;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0059cc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-box">
+
+        <h2>Technical Vehicles – Vendor / Owner Registration</h2>
+
+        <form>
+
+            <!-- Owner Details -->
+            <label>Owner / Company Name</label>
+            <input type="text" placeholder="Owner or business name" required>
+
+            <label>Mobile Number</label>
+            <input type="tel" placeholder="Enter mobile number" required>
+
+            <label>Alternate Mobile (Optional)</label>
+            <input type="tel" placeholder="Alternate number">
+
+            <label>Email (Optional)</label>
+            <input type="email" placeholder="Email address">
+
+            <label>Business Address</label>
+            <textarea rows="2" placeholder="Full business / operating address" required></textarea>
+
+            <label>Service Location / Area Covered</label>
+            <input type="text" placeholder="Example: Rourkela, Sundargarh, Odisha" required>
+
+            <!-- Vehicle Details -->
+            <label>Type of Vehicle</label>
+            <select required>
+                <option value="">Select Vehicle</option>
+
+                <!-- Earthmovers -->
+                <option>JCB</option>
+                <option>Hitachi Excavator</option>
+                <option>Backhoe Loader</option>
+                <option>Dozer</option>
+                <option>Bobcat Skid-Steer Loader</option>
+
+                <!-- Lifting -->
+                <option>Crane (Hydra)</option>
+                <option>Tower Crane</option>
+                <option>Forklift</option>
+
+                <!-- Transport -->
+                <option>Dumper</option>
+                <option>Tipper</option>
+                <option>Tractor Trolley</option>
+                <option>Pickup Van</option>
+
+                <!-- Concrete & Road -->
+                <option>Transit Mixer</option>
+                <option>Concrete Pump</option>
+                <option>Road Roller</option>
+                <option>Paver Machine</option>
+
+                <!-- Others -->
+                <option>Water Tanker</option>
+                <option>DG Generator Set</option>
+                <option>Other (Specify below)</option>
+            </select>
+
+            <label>If Other Vehicle, Please Specify</label>
+            <input type="text" placeholder="Write vehicle name">
+
+            <!-- Vehicle Information -->
+            <label>Vehicle Model / Capacity</label>
+            <input type="text" placeholder="Example: JCB 3DX, Hitachi 200, 14 Ton Hydra">
+
+            <label>Vehicle Registration Number</label>
+            <input type="text" placeholder="Example: OD-14-XXXX">
+
+            <label>Vehicle Condition</label>
+            <select required>
+                <option>New</option>
+                <option>Good Condition</option>
+                <option>Average Condition</option>
+                <option>Requires Minor Repair</option>
+            </select>
+
+            <label>Availability</label>
+            <select required>
+                <option>Available Daily</option>
+                <option>Available on Demand</option>
+                <option>Booked for Long Term</option>
+            </select>
+
+            <label>Driver Provided?</label>
+            <select required>
+                <option>Yes, Driver Included</option>
+                <option>No, Only Vehicle</option>
+            </select>
+
+            <!-- Pricing -->
+            <label>Pricing Type</label>
+            <select required>
+                <option>Hourly Rate</option>
+                <option>Daily Rate</option>
+                <option>Per Trip Rate</option>
+                <option>Project Based</option>
+            </select>
+
+            <label>Price / Rate (₹)</label>
+            <input type="text" placeholder="Example: ₹800/hr, ₹6000/day" required>
+
+            <!-- Upload -->
+            <label>Upload Vehicle Photos (Front, Side, Back)</label>
+            <input type="file" accept="image/*" multiple>
+
+            <label>Upload RC / Permit Copy</label>
+            <input type="file" accept="image/*,application/pdf" multiple>
+
+            <!-- Additional Details -->
+            <label>Additional Information (Optional)</label>
+            <textarea rows="3" placeholder="Insurance, special features, restrictions etc."></textarea>
+
+            <button type="submit">Submit Registration</button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

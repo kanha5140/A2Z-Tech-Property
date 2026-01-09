@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Registration Form - BODS INFRA</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* BASIC STYLE */
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION CSS --- */
+        .navbar {
+            background-color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar-logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff8c00;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            margin-left: 25px;
+        }
+
+        .nav-link {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ff8c00;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        /* FORM CONTAINER */
+        .form-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .intro-text {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #ff8c00;
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .checkbox-group {
+            margin-top: 20px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .checkbox-group label {
+            display: inline;
+            font-weight: normal;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 30px;
+            background: linear-gradient(45deg, #ff8c00, #ff6b35);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 140, 0, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 140, 0, 0.4);
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* SOCIAL BUTTONS */
+        .social-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .social-buttons a {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp {
+            background: #25D366;
+        }
+
+        .facebook {
+            background: #3b5998;
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, #C13584, #E1306C, #F56040);
+        }
+
+        .linkedin {
+            background: #0077b5;
+        }
+
+        .twitter {
+            background: #1da1f2;
+        }
+
+        .social-buttons a:hover {
+            transform: scale(1.1);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: white;
+                border-top: 1px solid #eee;
+                text-align: center;
+                padding: 10px 0;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-item {
+                margin: 10px 0;
+            }
+
+            .nav-link {
+                padding: 10px 0;
+                display: block;
+                color: #333;
+            }
+
+            .form-container {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="logo.png" alt="BODS INFRA Logo">
+            <a href="index.html">A2ZTechProperty </a>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="owr-Property.html" class="nav-link">Property</a></li>
+            <li class="nav-item"><a href="agent-registration.html" class="nav-link">Agent</a></li>
+            <!----
+            <li class="nav-item"><a href="service.html" class="nav-link">Services</a></li>            
+            <li class="nav-item"><a href="meterials.html" class="nav-link">Meterial</a></li>
+            <li class="nav-item"><a href="technical-vehicals.html" class="nav-link">Technical Vehicles</a></li>
+---->
+            <li class="nav-item"><a href="investors.html" class="nav-link">Investors</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <div class="social-buttons">
+        <a href="https://wa.me/+918847806339" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://facebook.com" class="facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://twitter.com" class="twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+
+    <div class="form-container">
+        <h2>Agent Registration ( One Time Registration)</h2>
+        <p class="intro-text">Join our network of professional real estate agents. Fill out the form below to get
+            started. All fields marked with * are required.</p>
+
+        <form id="agentForm">
+
+            <!-- Personal Information -->
+            <h3>Personal Information</h3>
+
+            <label>Full Name *</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+
+
+            <label>Date of Birth *</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label>Gender *</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+
+            <label>Mobile Number *</label>
+            <input type="tel" id="mobile" name="mobile" placeholder="Enter mobile number (10 digits)" required>
+
+            <label>Email *</label>
+            <input type="email" id="email" name="email" placeholder="Enter email address" required>
+
+            <label>Address *</label>
+            <textarea id="address" name="address" placeholder="Enter your full address" required></textarea>
+
+            <label>City / Working Area *</label>
+            <input type="text" id="city" name="city" placeholder=" Enter city or working area" required>
+
+            <!-- Professional Information -->
+            <h3>Professional Information</h3>
+
+            <label>Experience in Real Estate *</label>
+            <select id="experience" name="experience" required>
+                <option value="">Select Experience</option>
+                <option>Fresher</option>
+                <option>1 - 3 years</option>
+                <option>3 - 5 years</option>
+                <option>5+ years</option>
+            </select>
+
+
+            <label>Type of Properties You Handle *</label>
+            <select id="properties" name="properties" required>
+                <option value="">Select Property Type</option>
+                <option>Residential</option>
+                <option>Commercial</option>
+                <option>Agriculture / Farm House</option>
+                <option>All Types</option>
+            </select>
+
+            <label>Agent Type *</label>
+            <select id="agentType" name="agentType" required>
+                <option value="">Select Agent Type</option>
+                <option>Purchase Agent</option>
+                <option>Sale Agent</option>
+                <option>Rent Agent</option>
+                <option>Owner Agent</option>
+                <option>Renter Agent</option>
+            </select>
+
+
+            <label>Are You Working Full-Time or Part-Time? *</label>
+            <select id="workType" name="workType" required>
+                <option value="">Select</option>
+                <option>Full-Time</option>
+                <option>Part-Time</option>
+            </select>
+
+            <label>Preferred Communication Mode *</label>
+            <select id="communication" name="communication" required>
+                <option value="">Select</option>
+                <option>Phone Call</option>
+                <option>WhatsApp</option>
+                <option>Email</option>
+            </select>
+
+            <label>Real Estate License Number (If Applicable)</label>
+            <input type=" text" id="license" name="license" placeholder="Enter license number">
+
+            <label>Previous Work Experience / References</label>
+            <textarea id="references" name="references"
+                placeholder="Describe your previous experience or provide references"></textarea>
+
+            <!----
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" required>
+                <label for="terms">I agree to the <a href="#" style="color: #ff8c00;">Terms and Conditions</a> and <a
+                        href="#" style="color: #ff8c00;">Privacy Policy</a> *</label>
+            </div>
+            
+            <div class="error" id="termsError"></div>
+
+            -->
+
+            <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-700">
+                Submit
+            </button>
+
+        </form>
+        <p style="text-align: center; color: #0077b5;"><b> After Submition This Form We Will Provide you a agent
+                Code number.</b></p>
+    </div>
+
+    <script>
+        // --- NEW HAMBURGER MENU SCRIPT ---
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked (for mobile)
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                navMenu.classList.remove('active');
+            }
+        }));
+    </script>
+    <script>
+        // --- Form Submission Script for Google Sheet ---
+
+        const form = document.getElementById('agentForm');
+        const successMsg = document.getElementById('successMsg');
+
+        // **PASTE YOUR WEB APP URL HERE**
+        const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbz5G7rhBVFJxn7KIzhcXFiY3fHdeKe3_VoIE-1O4JoYr2nVNHQQz4hinZm_P2zawxU/exec';
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault(); // Stop the default form submission
+
+            // Disable button and show loading state (optional)
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+
+            const formData = new FormData(form);
+            const object = {};
+            formData.forEach((value, key) => {
+                // Note: The key is the 'name' attribute of your form fields
+                object[key] = value;
+            });
+
+            // Use fetch to send the data to the Google Apps Script
+            fetch(GAS_WEB_APP_URL, {
+                method: 'POST',
+                mode: 'no-cors', // Important for a simple form-to-sheet script
+                cache: 'no-cache',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                // Convert the object to a URL-encoded string
+                body: new URLSearchParams(object).toString()
+            })
+                .then(() => {
+                    // Success Handling
+                    form.reset(); // Clear the form
+                    successMsg.style.display = 'block';
+
+                    // Re-enable button after a short delay
+                    setTimeout(() => {
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Submit';
+                        successMsg.style.display = 'none';
+                    }, 5000);
+                })
+                .catch(error => {
+                    // Error Handling (will also run for 'no-cors' mode even on success, so sometimes misleading)
+                    console.error('Submission failed:', error);
+                    alert('There was an issue submitting the form. Please try again.');
+
+                    // Ensure button is re-enabled on error
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Submit';
+                });
+        });
+    </script>
+</body>
+
+</html>

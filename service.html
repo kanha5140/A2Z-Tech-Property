@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - BODS INFRA TECH SOLUTION</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* BASIC STYLE */
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img1.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        header img {
+            width: 80px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin: 5px 0;
+            font-weight: 300;
+        }
+
+        /* SOCIAL BUTTONS */
+        .social-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .social-buttons a {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp {
+            background: #25D366;
+        }
+
+        .facebook {
+            background: #3b5998;
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, #C13584, #E1306C, #F56040);
+        }
+
+        .linkedin {
+            background: #0077b5;
+        }
+
+        .twitter {
+            background: #1da1f2;
+        }
+
+        .social-buttons a:hover {
+            transform: scale(1.1);
+        }
+
+        /* SERVICES INTRO */
+        .services-intro {
+            padding: 60px 20px;
+            text-align: center;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .services-intro h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .services-intro p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* SERVICES GRID */
+        .services-section {
+            padding: 40px 20px;
+            text-align: center;
+            background: #f9f9f9;
+        }
+
+        .services-section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(45deg, #ff8c00, #ff6b35);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card .icon {
+            font-size: 3rem;
+            color: #ff8c00;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .service-card ul li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .service-card ul li::before {
+            content: '✓';
+            color: #ff8c00;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        button {
+            background: linear-gradient(45deg, #ff8c00, #ff6b35);
+            border: none;
+            padding: 12px 25px;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 140, 0, 0.3);
+            width: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 140, 0, 0.4);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav ul li a {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+
+            .services-intro h2 {
+                font-size: 2rem;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .service-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- SOCIAL BUTTONS -->
+    <div class="social-buttons">
+        <a href="https://wa.me/+918847806339" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://facebook.com" class="facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://twitter.com" class="twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="logo.png" alt="BODS INFRA Logo">
+            <a href="index.html">A2ZTechProperty </a>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="properties.html" class="nav-link">Property</a></li>
+            <li class="nav-item"><a href="service.html" class="nav-link">Services</a></li>
+            <!----
+            <li class="nav-item"><a href="meterials.html" class="nav-link">Meterial</a></li>
+            -->
+            <li class="nav-item"><a href="technical-vehicals.html" class="nav-link">Technical Vehicles</a></li>
+            <li class="nav-item"><a href="investors.html" class="nav-link">Investors</a></li>
+            <li class="nav-item"><a href="agent-registration.html" class="nav-link">Agent</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <style>
+        /* --- NEW NAVIGATION CSS --- */
+        /* NAVIGATION BAR */
+        .navbar {
+            background-color: white;
+            /* White background for navigation */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            /* Softer shadow */
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 40px;
+            /* Adjust logo size as needed */
+            margin-right: 10px;
+        }
+
+        .navbar-logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff8c00;
+            /* Orange color for the logo text */
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            margin-left: 25px;
+        }
+
+        .nav-link {
+            color: #333;
+            /* Darker text for white background */
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ff8c00;
+        }
+
+        /* HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            /* Hidden by default on desktop */
+            cursor: pointer;
+            font-size: 1.8rem;
+            /* Slightly larger icon */
+            color: #333;
+            /* Dark color for the icon */
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+
+            /* Mobile Navigation Styles */
+            .hamburger {
+                display: block;
+                /* Show hamburger on mobile */
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                /* Below the nav bar */
+                left: 0;
+                background-color: white;
+                /* White background for mobile menu */
+                border-top: 1px solid #eee;
+                /* Light border */
+                text-align: center;
+                padding: 10px 0;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                /* Shadow for dropdown */
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-item {
+                margin: 10px 0;
+            }
+
+            .nav-link {
+                padding: 10px 0;
+                display: block;
+                color: #333;
+                /* Dark text on white background */
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+
+            .section-2 {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .collab-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slideshow-container {
+                max-width: 100%;
+            }
+
+            iframe {
+                height: 250px;
+            }
+        }
+
+        @media (min-width: 700px) {
+            .section-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+
+    <script>
+        // --- NEW HAMBURGER MENU SCRIPT ---
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked (for mobile)
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                navMenu.classList.remove('active');
+            }
+        }));
+    </script>
+
+    <!-- SERVICES INTRO -->
+    <section class="services-intro">
+        <h2>Our Comprehensive Services</h2>
+        <p>At BODS INFRA TECH SOLUTION, we offer a wide range of professional construction and renovation services
+            tailored to meet the diverse needs of our clients in Odisha and beyond. From new constructions to
+            specialized repairs, our expert team ensures quality, efficiency, and innovation in every project.</p>
+        <div style="margin-top:20px;">
+            <a href="services-for costomer.html"><button>Services For Costomers</button></a>
+        </div>
+        <div style="margin-top:10px;">
+            <a href="#"><button>Services For Partners</button></a>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services-section" id="service">
+        <h2>Explore Our Services</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="icon"><i class="fas fa-home"></i></div>
+                <h3>New Construction</h3>
+                <p>We specialize in end-to-end new construction projects, delivering high-quality residential,
+                    commercial, and industrial buildings with a focus on sustainability and modern design.</p>
+                <ul>
+                    <li>Site planning and preparation</li>
+                    <li>Structural engineering</li>
+                    <li>Quality material sourcing</li>
+                    <li>Timely project completion</li>
+                </ul>
+                <a href="contact.html"><button>Get Quote</button></a>
+            </div>
+            <div class="service-card">
+                <div class="icon"><i class="fas fa-tools"></i></div>
+                <h3>Repair & Renovation</h3>
+                <p>Revitalize your property with our expert repair and renovation services, enhancing functionality,
+                    aesthetics, and value through meticulous craftsmanship.</p>
+                <ul>
+                    <li>Structural repairs</li>
+                    <li>Interior and exterior updates</li>
+                    <li>Modern upgrades</li>
+                    <li>Custom design solutions</li>
+                </ul>
+                <a href="contact.html"><button>Get Quote</button></a>
+            </div>
+            <div class="service-card">
+                <div class="icon"><i class="fas fa-hammer"></i></div>
+                <h3>Demolition</h3>
+                <p>Our safe and efficient demolition services ensure the careful removal of structures, adhering to
+                    environmental standards and safety protocols.</p>
+                <ul>
+                    <li>Controlled demolition</li>
+                    <li>Waste management</li>
+                    <li>Safety compliance</li>
+                    <li>Site clearance</li>
+                </ul>
+                <a href="service-form.html"><button>Get Quote</button></a>
+            </div>
+            <div class="service-card">
+                <div class="icon"><i class="fas fa-paint-roller"></i></div>
+                <h3>Painting</h3>
+                <p>Achieve a flawless finish with our professional painting services, using premium paints and
+                    techniques for interiors and exteriors.</p>
+                <ul>
+                    <li>Interior and exterior painting</li>
+                    <li>Color consultation</li>
+                    <li>Texture and finish options</li>
+                    <li>Durable, eco-friendly paints</li>
+                </ul>
+                <a href="service-form.html"><button>Get Quote</button></a>
+            </div>
+            <div class="service-card">
+                <div class="icon"><i class="fas fa-th-large"></i></div>
+                <h3>Flooring & Tiles</h3>
+                <p>Transform your floors with our expert installation of high-quality tiles and flooring materials,
+                    designed for durability and style.</p>
+                <ul>
+                    <li>Ceramic and porcelain tiles</li>
+                    <li>Vinyl and hardwood flooring</li>
+                    <li>Custom layouts</li>
+                    <li>Sealing and maintenance</li>
+                </ul>
+                <a href="service-form.html"><button>Get Quote</button></a>
+            </div>
+            <div class="service-card">
+                <div class="icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Boundary Wall</h3>
+                <p>Secure your property with our robust boundary wall construction and repair services, using durable
+                    materials for long-lasting protection.</p>
+                <ul>
+                    <li>Concrete and brick walls</li>
+                    <li>Metal fencing options</li>
+                    <li>Design customization</li>
+                    <li>Foundation and reinforcement</li>
+                </ul>
+                <a href="service-form.html"><button>Get Quote</button></a>
+            </div>
+            <div class="service-card">
+                <div class="icon"><i class="fas fa-bolt"></i></div>
+                <h3>Electrical Work</h3>
+                <p>Ensure safety and efficiency with our comprehensive electrical services, from installations to
+                    repairs and upgrades.</p>
+                <ul>
+                    <li>Wiring and installations</li>
+                    <li>Lighting systems</li>
+                    <li>Safety inspections</li>
+                    <li>Energy-efficient solutions</li>
+                </ul>
+                <a href="service-form.html"><button>Get Quote</button></a>
+            </div>
+            <div class="service-card">
+                <div class="icon"><i class="fas fa-tint"></i></div>
+                <h3>Plumbing Work</h3>
+                <p>Reliable plumbing solutions for all your water and drainage needs, delivered with precision and
+                    expertise.</p>
+                <ul>
+                    <li>Pipe installations</li>
+                    <li>Leak repairs</li>
+                    <li>Drainage systems</li>
+                    <li>Fixture replacements</li>
+                </ul>
+                <a href="service-form.html"><button>Get Quote</button></a>
+            </div>
+            <div class="service-card">
+                <div class="icon"><i class="fas fa-layer-group"></i></div>
+                <h3>False Ceiling</h3>
+                <p>Enhance your space with elegant false ceilings that improve acoustics, lighting, and overall
+                    aesthetics.</p>
+                <ul>
+                    <li>Gypsum and PVC options</li>
+                    <li>Custom designs</li>
+                    <li>Lighting integration</li>
+                    <li>Soundproofing features</li>
+                </ul>
+                <a href="service-form.html"><button>Get Quote</button></a>
+            </div>
+            <div class="service-card">
+                <div class="icon"><i class="fas fa-utensils"></i></div>
+                <h3>Modular Kitchen</h3>
+                <p>Create your dream kitchen with our modular designs, featuring custom cabinets, appliances, and
+                    ergonomic layouts.</p>
+                <ul>
+                    <li>Custom cabinetry</li>
+                    <li>Appliance integration</li>
+                    <li>Space optimization</li>
+                    <li>Modern finishes</li>
+                </ul>
+                <a href="service-form.html"><button>Get Quote</button></a>
+            </div>
+            <div class="service-card">
+                <div class="icon"><i class="fas fa-shower"></i></div>
+                <h3>Waterproofing</h3>
+                <p>Protect your property from water damage with our advanced waterproofing solutions for roofs, walls,
+                    and basements.</p>
+                <ul>
+                    <li>Roof and terrace waterproofing</li>
+                    <li>Wall and floor treatments</li>
+                    <li>Leak prevention</li>
+                    <li>Durable sealants</li>
+                </ul>
+                <a href="service-form.html"><button>Get Quote</button></a>
+            </div>
+            <div class="service-card">
+                <div class="icon"><i class="fas fa-cogs"></i></div>
+                <h3>Fabrication Work</h3>
+                <p>Custom metal fabrication for gates, railings, and structures, crafted to meet your specific
+                    requirements.</p>
+                <ul>
+                    <li>Metal gates and railings</li>
+                    <li>Structural components</li>
+                    <li>Precision welding</li>
+                    <li>Finishing and coating</li>
+                </ul>
+                <a href="service-form.html"><button>Get Quote</button></a>
+            </div>
+            <div class="service-card">
+                <div class="icon"><i class="fas fa-drafting-compass"></i></div>
+                <h3>Architect/Engineer Services</h3>
+                <p>Professional architectural and engineering consultations to design and plan projects that align with
+                    your vision and budget.</p>
+                <ul>
+                    <li>Project planning</li>
+                    <li>Design and drafting</li>
+                    <li>Regulatory approvals</li>
+                    <li>Construction supervision</li>
+                </ul>
+                <a href="service-form.html"><button>Get Quote</button></a>
+            </div>
+        </div>
+    </section>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h3>A2ZTechProperty</h3>
+                <p>Your trusted partner for premium properties in Odisha. Discover apartments, plots, buildings, and
+                    commercial spaces tailored to your needs.</p>
+                <p>&copy; 2024 A2ZTechProperty. All rights reserved.</p>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="properties.html">Properties</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="agent-registration.html">Agent Registration</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +91 8847806339</p>
+                <p><i class="fas fa-envelope"></i> info@a2ztechproperty.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Bhubaneswar, Odisha, India</p>
+            </div>
+            <div class="footer-section social">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="https://wa.me/+918847806339" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://facebook.com" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" class="instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://twitter.com" class="twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <style>
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, #222 0%, #333 100%);
+            color: white;
+            padding: 40px 20px 20px;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            color: #ff8c00;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff8c00;
+        }
+
+        .footer-section.contact p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-section.contact i {
+            color: #ff8c00;
+            width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-links .whatsapp {
+            background: #25D366;
+        }
+
+        .social-links .facebook {
+            background: #3b5998;
+        }
+
+        .social-links .instagram {
+            background: linear-gradient(45deg, #C13584, #E1306C, #F56040);
+        }
+
+        .social-links .linkedin {
+            background: #0077b5;
+        }
+
+        .social-links .twitter {
+            background: #1da1f2;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        /* RESPONSIVE FOOTER */
+        @media (max-width: 768px) {
+            footer {
+                padding: 30px 15px 15px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .footer-section h3 {
+                font-size: 1.1rem;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .social-links a {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            footer {
+                padding: 20px 10px 10px;
+                font-size: 0.8rem;
+            }
+
+            .footer-section h3 {
+                font-size: 1rem;
+            }
+
+            .footer-section.contact p {
+                font-size: 0.85rem;
+            }
+
+            .social-links a {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</body>
+
+</html>

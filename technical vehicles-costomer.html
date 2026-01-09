@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Vehicles Customer Form</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            padding: 20px;
+        }
+
+        .form-box {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-top: 15px;
+            display: block;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            margin-top: 25px;
+            width: 100%;
+            padding: 15px;
+            background: #0072ff;
+            color: white;
+            border: none;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0059cc;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="form-box">
+
+        <h2>Technical Vehicles – Customer Request Form</h2>
+
+        <form>
+
+            <!-- Basic Details -->
+            <label>Customer Name</label>
+            <input type="text" placeholder="Full Name" required>
+
+            <label>Mobile Number</label>
+            <input type="tel" placeholder="Enter mobile number" required>
+
+            <label>Alternative Mobile (Optional)</label>
+            <input type="tel" placeholder="Alternate number">
+
+            <label>Email (Optional)</label>
+            <input type="email" placeholder="Email address">
+
+            <!-- Location -->
+            <label>Site Location / Address</label>
+            <textarea rows="2" placeholder="Where the vehicle is required?" required></textarea>
+
+            <label>City / Area</label>
+            <input type="text" placeholder="City or Area name" required>
+
+
+            <!-- Type of Technical Vehicle -->
+            <label>Select Vehicle Type</label>
+            <select required>
+                <option value="">Select Vehicle</option>
+
+                <!-- Earthmovers -->
+                <option>JCB</option>
+                <option>Hitachi Excavator</option>
+                <option>Backhoe Loader</option>
+                <option>Dozer</option>
+                <option>Bobcat Skid-Steer Loader</option>
+
+                <!-- Lifting -->
+                <option>Crane (Hydra)</option>
+                <option>Tower Crane</option>
+                <option>Forklift</option>
+
+                <!-- Transport -->
+                <option>Dumper</option>
+                <option>Tractor-Trolley</option>
+                <option>Tippers</option>
+                <option>Pickup Van</option>
+
+                <!-- Concrete & Road -->
+                <option>Transit Mixer</option>
+                <option>Concrete Pump</option>
+                <option>Road Roller</option>
+                <option>Paver Machine</option>
+
+                <!-- Others -->
+                <option>Water Tanker</option>
+                <option>Generator (DG Set)</option>
+                <option>Other (Specify below)</option>
+            </select>
+
+            <label>If Other Vehicle, Please Specify</label>
+            <input type="text" placeholder="Write vehicle name">
+
+            <!-- Work Details -->
+            <label>Work Type / Purpose</label>
+            <select required>
+                <option>Select Purpose</option>
+                <option>Excavation / Digging</option>
+                <option>Land Levelling</option>
+                <option>Material Loading</option>
+                <option>Concrete Work</option>
+                <option>Construction Support</option>
+                <option>Transport / Delivery</option>
+                <option>Road Development</option>
+                <option>Demolition Work</option>
+                <option>Others</option>
+            </select>
+
+            <label>Estimated Work Duration</label>
+            <select required>
+                <option>2-5 Hours</option>
+                <option>5-8 Hours</option>
+                <option>1 Day</option>
+                <option>2-3 Days</option>
+                <option>1 Week</option>
+                <option>More than 1 Week</option>
+            </select>
+
+            <!-- Time & Date -->
+            <label>Date You Need the Vehicle</label>
+            <input type="date" required>
+
+            <label>Preferred Time Slot</label>
+            <select required>
+                <option>Morning (6 AM – 12 PM)</option>
+                <option>Afternoon (12 PM – 4 PM)</option>
+                <option>Evening (4 PM – 7 PM)</option>
+                <option>Flexible</option>
+            </select>
+
+            <!-- Budget -->
+            <label>Expected Budget (Optional)</label>
+            <input type="text" placeholder="Example: 800/hr, 2000/day">
+
+            <!-- Additional Info -->
+            <label>Additional Requirements (Optional)</label>
+            <textarea rows="3" placeholder="Any specific conditions, work details, safety requirement..."></textarea>
+
+            <button type="submit">Submit Request</button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

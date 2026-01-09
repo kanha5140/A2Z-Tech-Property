@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent for Seller Registration Form</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef3f7;
+      padding: 25px;
+    }
+
+    .form-box {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 25px;
+      background: #0066ff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #004ecc;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div class="form-box">
+    <h2>Agent Registration – For Seller (Owner)</h2>
+    <form id="agentRegistrationForm" method="POST"
+      action="https://script.google.com/macros/s/AKfycbxe249X0pr6mQ_GwfYRyuKLY2Rk4hi7sSEaQ5IGc7lPmAZeDaOLW2Mt_VrRl0T1auH1/exec">
+
+      <label>Agent Full Name</label>
+      <input type="text" name="fullName" placeholder="Enter full name" required>
+
+      <label>Mobile Number</label>
+      <input type="tel" name="mobile" maxlength="12" placeholder="Enter mobile number" required>
+
+      <label>Email (Optional)</label>
+      <input type="email" name="email" placeholder="Enter email">
+
+      <label>Aadhar Number (Last 4 digits only)</label>
+      <input type="text" name="aadhar" maxlength="4" placeholder="0000" required>
+
+      <label>GST Number (If applicable)</label>
+      <input type="text" name="gstNumber" placeholder="Enter GST Number">
+
+      <label>Agent Type</label>
+      <select name="agentType" required>
+        <option value="">Select</option>
+        <option>Individual Agent</option>
+        <option>Brokerage Firm</option>
+        <option>Real Estate Consultant</option>
+        <option>Channel Partner</option>
+      </select>
+
+      <label>Experience Level</label>
+      <select name="experience" required>
+        <option>New (0-1 Year)</option>
+        <option>Experienced (1-5 Years)</option>
+        <option>Senior (5+ Years)</option>
+      </select>
+
+
+      <label>Selling Category (Specialization)</label>
+      <select name="sellingCategory" required>
+        <option>Residential</option>
+        <option>Commercial</option>
+        <option>Industrial</option>
+        <option>Agriculture / Farm Land</option>
+        <option>Farm House</option>
+        <option>All Types</option>
+      </select>
+
+      <label>Preferred Working Location</label>
+      <input type="text" name="workLocation" placeholder="City / Area / District" required>
+
+      <label>Do you have any property available for selling now?</label>
+      <select name="propertyForSale" required>
+        <option>No</option>
+        <option>Yes – Residential</option>
+        <option>Yes – Commercial</option>
+        <option>Yes – Industrial</option>
+        <option>Yes – Agriculture</option>
+        <option>Yes – Farm House</option>
+      </select>
+
+      <label>If Yes, Property Details</label>
+      <textarea rows="3" name="propertyDetails" placeholder="Type, Location, Size, Price, Documents, etc."></textarea>
+
+      <label>Your Expected Commission from Seller</label>
+      <select name="expectedCommission" required>
+        <option>1%</option>
+        <option>2%</option>
+        <option>3%</option>
+        <option>4%</option>
+        <option>5%+</option>
+        <option>As per mutual agreement</option>
+      </select>
+
+      <label>Are you ready to follow A2ZTechProperty legal guidelines?</label>
+      <select name="legalGuideline" required>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+
+      <label>Do you have an Agent Reference Number?</label>
+      <select id="refSelect" name="refSelect" onchange="toggleRefInput()">
+        <option value="">Select</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <input type="text" id="refNumber" name="refNumber" placeholder="Enter Agent Reference Number"
+        style="display:none; margin-top:8px;">
+
+      <script>
+        function toggleRefInput() {
+          const select = document.getElementById("refSelect");
+          const input = document.getElementById("refNumber");
+
+          if (select.value === "yes") {
+            input.style.display = "block";
+            input.required = true;
+          } else {
+            input.style.display = "none";
+            input.required = false;
+            input.value = "";
+          }
+        }
+      </script>
+
+      <label>How Did You Hear About Us?</label>
+      <select name="hearAboutUs">
+        <option>WhatsApp</option>
+        <option>Google</option>
+        <option>Facebook</option>
+        <option>Instagram</option>
+        <option>Referral</option>
+        <option>Other</option>
+      </select>
+
+      <button type="submit">Submit Registration</button>
+
+    </form>
+
+    <div id="formStatus" style="margin-top: 20px; font-weight: bold;"></div>
+  </div>
+  <script>
+    // Add this script to your HTML file, usually before the closing </body> tag
+    document.getElementById('agentRegistrationForm').addEventListener('submit', function (e) {
+      e.preventDefault(); // Stop the default form submission
+
+      const form = e.target;
+      const data = new FormData(form);
+
+      // Display a temporary loading message
+      const submitButton = form.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.textContent;
+      submitButton.textContent = "Submitting...";
+      submitButton.disabled = true;
+
+      // Send the form data to the Google Apps Script URL
+      fetch(form.action, {
+        method: 'POST',
+        body: new URLSearchParams(data) // Format data for Google Script
+      })
+        .then(response => {
+          if (response.ok) {
+            alert('✅ Registration Successful! Thank you.');
+            form.reset(); // Clear the form
+          } else {
+            alert('❌ Submission failed. Please try again.');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('❌ An error occurred during submission.');
+        })
+        .finally(() => {
+          // Restore the button text and state
+          submitButton.textContent = originalButtonText;
+          submitButton.disabled = false;
+        });
+    });
+  </script>
+</body>
+
+</html>

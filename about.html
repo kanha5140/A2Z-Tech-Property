@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Learn about A2ZTechProperty, a technology-driven real estate platform by BODS Infratech Private Limited, connecting buyers, sellers, and stakeholders in Odisha.">
+    <meta name="keywords"
+        content="A2ZTechProperty, real estate, Odisha, BODS Infratech, property listings, construction services">
+    <title>About Us - A2ZTechProperty</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* BASIC STYLE */
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION BAR */
+        .navbar {
+            background-color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar-logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff8c00;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            margin-left: 25px;
+        }
+
+        .nav-link {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ff8c00;
+        }
+
+        /* HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(74, 73, 73, 0.4), rgba(59, 59, 59, 0.6)), url('bg contact us.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin: 10px 0;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin: 10px 0;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ABOUT US CONTENT */
+        .about-section {
+            padding: 60px 20px;
+            background: white;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #ff8c00;
+            text-align: center;
+            position: relative;
+        }
+
+        .about-section h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: #ff8c00;
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .about-section h3 {
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-section h3 i {
+            color: #ff8c00;
+        }
+
+        .about-section p {
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .about-section ul {
+            margin-bottom: 30px;
+            padding-left: 20px;
+        }
+
+        .about-section li {
+            margin-bottom: 10px;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #ff8c00 0%, #ff6b35 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(255, 140, 0, 0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .highlight h3 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .highlight ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .highlight li {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(37, 211, 102, 0.4);
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* SOCIAL BUTTONS */
+        .social-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .social-buttons a {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp {
+            background: #25D366;
+        }
+
+        .facebook {
+            background: #3b5998;
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, #C13584, #E1306C, #F56040);
+        }
+
+        .linkedin {
+            background: #0077b5;
+        }
+
+        .twitter {
+            background: #1da1f2;
+        }
+
+        .social-buttons a:hover {
+            transform: scale(1.1);
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, #222 0%, #333 100%);
+            color: white;
+            padding: 40px 20px 20px;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            color: #ff8c00;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff8c00;
+        }
+
+        .footer-section.contact p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-section.contact i {
+            color: #ff8c00;
+            width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-links .whatsapp {
+            background: #25D366;
+        }
+
+        .social-links .facebook {
+            background: #3b5998;
+        }
+
+        .social-links .instagram {
+            background: linear-gradient(45deg, #C13584, #E1306C, #F56040);
+        }
+
+        .social-links .linkedin {
+            background: #0077b5;
+        }
+
+        .social-links .twitter {
+            background: #1da1f2;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: white;
+                border-top: 1px solid #eee;
+                text-align: center;
+                padding: 10px 0;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-item {
+                margin: 10px 0;
+            }
+
+            .nav-link {
+                padding: 10px 0;
+                display: block;
+                color: #333;
+            }
+
+            .hero {
+                padding: 80px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-section {
+                padding: 40px 20px;
+            }
+
+            .about-section h2 {
+                font-size: 2rem;
+            }
+
+            .about-section h3 {
+                font-size: 1.5rem;
+            }
+
+            .highlight {
+                padding: 20px;
+            }
+
+            .highlight ul {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .social-buttons {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .social-buttons a {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .social-links a {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 15px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-section {
+                padding: 20px 15px;
+            }
+
+            .about-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-section h3 {
+                font-size: 1.3rem;
+            }
+
+            .about-section p {
+                font-size: 1rem;
+            }
+
+            .about-section li {
+                font-size: 1rem;
+            }
+
+            .highlight {
+                padding: 15px;
+                margin: 20px 0;
+            }
+
+            footer {
+                padding: 20px 10px 10px;
+                font-size: 0.8rem;
+            }
+
+            .footer-section h3 {
+                font-size: 1rem;
+            }
+
+            .social-links a {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="logo.png" alt="BODS INFRA Logo">
+            <a href="index.html">A2ZTechProperty</a>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="owr-Property.html" class="nav-link">Property</a></li>
+            <li class="nav-item"><a href="agent-registration.html" class="nav-link">Agent</a></li>
+            <!----
+            <li class="nav-item"><a href="service.html" class="nav-link">Services</a></li>            
+            <li class="nav-item"><a href="meterials.html" class="nav-link">Meterial</a></li>
+            <li class="nav-item"><a href="technical-vehicals.html" class="nav-link">Technical Vehicles</a></li>
+---->
+            <li class="nav-item"><a href="investors.html" class="nav-link">Investors</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <div class="social-buttons">
+        <a href="https://wa.me/+918847806339" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://facebook.com" class="facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://twitter.com" class="twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+
+    <section class="hero">
+        <h1>About Us</h1>
+        <p>Discover how A2ZTechProperty is revolutionizing real estate in India with technology and trust.</p>
+    </section>
+
+    <section class="about-section">
+        <h2>About A2ZTechProperty</h2>
+        <p><i class="fas fa-building"></i> A2ZTechProperty is a technology-driven real estate platform developed by BODS
+            Infratech Private Limited. We connect property buyers, sellers, developers, contractors, technical vehicle
+            owners, vendors, and investors on one trusted digital platform.</p>
+
+        <h3><i class="fas fa-info-circle"></i> About BODS Infratech Private Limited</h3>
+        <p>BODS Infratech Private Limited is a registered Indian company incorporated on 03 January 2024 and based in
+            Rourkela, Odisha. We are a Startup India certified organization with a clear mission: to simplify and
+            digitize the real estate and construction ecosystem.</p>
+
+        <h3><i class="fas fa-exclamation-triangle"></i> The Real Estate Challenge</h3>
+        <p>The real estate industry in India is highly fragmented. Customers struggle to find trusted agents, developers
+            face marketing and lead challenges, contractors and technical vehicle owners lack consistent work, and
+            transparency is often missing.</p>
+
+        <h3><i class="fas fa-lightbulb"></i> Our Solution</h3>
+        <p>We built A2ZTechProperty to solve these problems by creating one unified digital ecosystem where every
+            stakeholder works together on a single platform. A2ZTechProperty brings everything under one roof — Property
+            listings, construction services, technical vehicles, materials, verified partners, and digital lead
+            management.</p>
+
+        <div class="highlight">
+            <h3>A2ZTechProperty Ecosystem</h3>
+            <p>A2ZTechProperty is not just a website; it is a growing ecosystem of:</p>
+            <ul>
+                <li>Land Owners</li>
+                <li>Agents</li>
+                <li>Developers</li>
+                <li>Engineers</li>
+                <li>Contractors</li>
+                <li>Technical Vehicle Owners</li>
+                <li>Vendors</li>
+                <li>Investors</li>
+            </ul>
+            <a href="https://wa.me/+918847806339" class="cta-button">Join Us on WhatsApp</a>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h3>A2ZTechProperty</h3>
+                <p>Your trusted partner for premium properties in Odisha. Discover apartments, plots, buildings, and
+                    commercial spaces tailored to your needs.</p>
+                <p>&copy; 2024 A2ZTechProperty. All rights reserved.</p>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="properties.html">Properties</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="agent-registration.html">Agent Registration</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +91 8847806339</p>
+                <p><i class="fas fa-envelope"></i> info@a2ztechproperty.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Bhubaneswar, Odisha, India</p>
+            </div>
+            <div class="footer-section social">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="https://wa.me/+918847806339" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://facebook.com" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" class="instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://twitter.com" class="twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <style>
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, #222 0%, #333 100%);
+            color: white;
+            padding: 40px 20px 20px;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            color: #ff8c00;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff8c00;
+        }
+
+        .footer-section.contact p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-section.contact i {
+            color: #ff8c00;
+            width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-links .whatsapp {
+            background: #25D366;
+        }
+
+        .social-links .facebook {
+            background: #3b5998;
+        }
+
+        .social-links .instagram {
+            background: linear-gradient(45deg, #C13584, #E1306C, #F56040);
+        }
+
+        .social-links .linkedin {
+            background: #0077b5;
+        }
+
+        .social-links .twitter {
+            background: #1da1f2;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        /* RESPONSIVE FOOTER */
+        @media (max-width: 768px) {
+            footer {
+                padding: 30px 15px 15px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .footer-section h3 {
+                font-size: 1.1rem;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .social-links a {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            footer {
+                padding: 20px 10px 10px;
+                font-size: 0.8rem;
+            }
+
+            .footer-section h3 {
+                font-size: 1rem;
+            }
+
+            .footer-section.contact p {
+                font-size: 0.85rem;
+            }
+
+            .social-links a {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+    </style>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

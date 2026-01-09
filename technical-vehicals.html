@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Vehicles - BODS INFRA</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* BASIC STYLE */
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* --- NEW NAVIGATION CSS --- */
+        /* NAVIGATION BAR */
+        .navbar {
+            background-color: white;
+            /* White background for navigation */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            /* Softer shadow */
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 40px;
+            /* Adjust logo size as needed */
+            margin-right: 10px;
+        }
+
+        .navbar-logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff8c00;
+            /* Orange color for the logo text */
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            margin-left: 25px;
+        }
+
+        .nav-link {
+            color: #333;
+            /* Darker text for white background */
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ff8c00;
+        }
+
+        /* HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            /* Hidden by default on desktop */
+            cursor: pointer;
+            font-size: 1.8rem;
+            /* Slightly larger icon */
+            color: #333;
+            /* Dark color for the icon */
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('jcb_2dx.webp') no-repeat center center/cover;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        header img {
+            width: 80px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin: 5px 0;
+            font-weight: 300;
+        }
+
+        /* SOCIAL BUTTONS */
+        .social-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .social-buttons a {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp {
+            background: #25D366;
+        }
+
+        .facebook {
+            background: #3b5998;
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, #C13584, #E1306C, #F56040);
+        }
+
+        .linkedin {
+            background: #0077b5;
+        }
+
+        .twitter {
+            background: #1da1f2;
+        }
+
+        .social-buttons a:hover {
+            transform: scale(1.1);
+        }
+
+        /* VEHICLE OPTIONS SECTION */
+        .vehicle-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .vehicle-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .vehicle-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .vehicle-box h3 {
+            color: #ff8c00;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        button {
+            background: linear-gradient(45deg, #ff8c00, #ff6b35);
+            border: none;
+            padding: 12px 25px;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 140, 0, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 140, 0, 0.4);
+        }
+
+        /* CONTACT */
+        #contact {
+            padding: 40px 20px;
+            text-align: center;
+            background: white;
+        }
+
+        #contact h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #contact p {
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+
+            /* Mobile Navigation Styles */
+            .hamburger {
+                display: block;
+                /* Show hamburger on mobile */
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                /* Below the nav bar */
+                left: 0;
+                background-color: white;
+                /* White background for mobile menu */
+                border-top: 1px solid #eee;
+                /* Light border */
+                text-align: center;
+                padding: 10px 0;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                /* Shadow for dropdown */
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-item {
+                margin: 10px 0;
+            }
+
+            .nav-link {
+                padding: 10px 0;
+                display: block;
+                color: #333;
+                /* Dark text on white background */
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .vehicle-section {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            iframe {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="logo.png" alt="BODS INFRA Logo">
+            <a href="index.html">A2ZTechProperty </a>
+        </div>
+          <ul class="nav-menu" id="navMenu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="owr-Property.html" class="nav-link">Property</a></li>
+            <li class="nav-item"><a href="agent-registration.html" class="nav-link">Agent</a></li>
+            <!----
+            <li class="nav-item"><a href="service.html" class="nav-link">Services</a></li>            
+            <li class="nav-item"><a href="meterials.html" class="nav-link">Meterial</a></li>
+            <li class="nav-item"><a href="technical-vehicals.html" class="nav-link">Technical Vehicles</a></li>
+---->
+            <li class="nav-item"><a href="investors.html" class="nav-link">Investors</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <div class="social-buttons">
+        <a href="https://wa.me/+918847806339" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://facebook.com" class="facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://twitter.com" class="twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+
+    <header>
+        <h1>Technical Vehicles</h1>
+        <p>Explore options for owning, renting, or managing technical vehicles in real estate.</p>
+        <p>A Unit Of BODS INFRA TECH PVT LTD.</p>
+    </header>
+
+    <div class="vehicle-section">
+        <div class="vehicle-box">
+            <h3>Owner</h3>
+            <p>Register as a vehicle owner and list your technical vehicles for rent.</p>
+            <a href="technical vehicles-ouner.html"> <button>Register as Owner</button> </a>
+        </div>
+        <div class="vehicle-box">
+            <h3>Customer</h3>
+            <p>Browse and purchase technical vehicles for your projects.</p>
+            <a href="technical vehicles-costomer.html"> <button> View vehicles</button> </a>
+        </div>
+        <div class="vehicle-box">
+            <h3>Renter</h3>
+            <p>Rent technical vehicles for short-term or project-based needs.</p>
+            <a href="technical vehicels-renter.html"> <button>Rent Now</button> </a>
+        </div>
+        <div class="vehicle-box">
+            <h3>Rent Owner</h3>
+            <p>Manage your rented vehicles and track earnings.</p>
+            <a href="technical vehicels-rent-ouner.html"> <button>Manage Rentals</button></a>
+        </div>
+    </div>
+
+    <script>
+        // --- NEW HAMBURGER MENU SCRIPT ---
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked (for mobile)
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                navMenu.classList.remove('active');
+            }
+        }));
+    </script>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3693.4038860413884!2d84.84742397413797!3d22.22474964563192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a20196024b40181%3A0xbd454f47a0bc95e4!2sBODS%20Infratech%20private%20limited!5e0!3m2!1sen!2sin!4v1763457271822!5m2!1sen!2sin"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <p>📍 A/3, Janaki Market Complex, Rourkela, Odisha</p>
+        <p>📞 8847806339</p>
+        <p>📧 bodsinfratech.care@gmail.com</p>
+        <a href="https://wa.me/+918847806339"><button>Contact Us</button></a>
+    </section>
+
+    <footer>
+        © 2024 BODS INFRATECH PRIVATE LIMITED. All rights reserved.
+    </footer>
+</body>
+
+</html>

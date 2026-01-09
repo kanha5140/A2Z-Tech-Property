@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Vehicles - Rent Owner Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 650px;
+            margin: auto;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            height: 80px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            border: none;
+            background: #333;
+            color: white;
+            font-size: 17px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="vehicleForm">
+        <h2>Technical Vehicles - Rent Owner Form</h2>
+
+        <!-- Owner Details -->
+        <label>Owner Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter owner name" required>
+
+        <label>Mobile Number</label>
+        <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Enter mobile number" required>
+
+        <label>Alternate Mobile Number (Optional)</label>
+        <input type="tel" id="alternateNumber" name="alternateNumber" placeholder="Enter alternate number">
+
+        <label>Email (Optional)</label>
+        <input type="email" id="email" name="email" placeholder="Enter email">
+
+        <label>Address</label>
+        <textarea id="address" name="address" placeholder="Enter owner full address"></textarea>
+        <!-- Vehicle Details -->
+        <h2>Vehicle Details</h2>
+
+        <label>Vehicle Type</label>
+        <select id="VehicleType" name="VehicleType" required>
+            <option value="">Select</option>
+            <option>JCB Machine</option>
+            <option>Hydra Crane</option>
+            <option>Pokland Excavator</option>
+            <option>Tractor</option>
+            <option>Truck</option>
+            <option>Tipper</option>
+            <option>Dumper</option>
+            <option>Road Roller</option>
+            <option>Concrete Mixer</option>
+            <option>Water Tanker</option>
+            <option>Loader</option>
+            <option>Compactor</option>
+            <option>Other Vehicle</option>
+        </select>
+
+        <label>Vehicle Model / Variant</label>
+        <input type="text" id="vehicleModel" name="vehicleModel"
+            placeholder="Enter model (e.g., JCB 3DX, Ashok Leyland Tipper)">
+
+        <label>Vehicle Registration Number</label>
+        <input type="text" id="VehicleRegistrationNumber" name="VehicleRegistrationNumber"
+            placeholder="Enter registration number">
+
+        <label>Manufacturing Year</label>
+        <input type="number" id="manufacturingYear" name="manufacturingYear" placeholder="Enter year">
+
+        <label>Fuel Type</label>
+        <select id="fuelType" name="fuelType">
+            <option>Select</option>
+            <option>Diesel</option>
+            <option>Petrol</option>
+            <option>Electric</option>
+        </select>
+
+        <label>Vehicle Condition</label>
+        <select id="vehicleCondition" name="vehicleCondition">
+            <option>Select</option>
+            <option>Excellent</option>
+            <option>Good</option>
+            <option>Average</option>
+        </select>
+
+
+        <!-- Operational Details -->
+        <h2>Operational Details</h2>
+
+        <label>Rent Price (Per Hour / Day)</label>
+        <input type="text" id="rentPrice" name="rentPrice" placeholder="Example: ₹1200/hr or ₹5000/day">
+
+        <label>Driver Included?</label>
+        <select id="driverIncluded" name="driverIncluded">
+            <option>Select</option>
+            <option>Yes, Driver Included</option>
+            <option>No, Vehicle Only</option>
+        </select>
+
+        <label>Working Area / Coverage Location</label>
+        <input type="text" id="workingArea" name="workingArea"
+            placeholder="Enter preferred locations or distance range">
+
+        <label>Availability Status</label>
+        <select id="availabilityStatus" name="availabilityStatus">
+            <option>Select</option>
+            <option>Available</option>
+            <option>Booked</option>
+            <option>On Call Available</option>
+        </select>
+
+        <!-- Extra -->
+        <label>Additional Information (Optional)</label>
+        <textarea id="additionalInfo" name="additionalInfo"
+            placeholder="Any specific details or conditions..."></textarea>
+
+        <button type="submit">Submit Details</button>
+
+    </form>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzbY5elxtHILcS7ZSKeW-_hKpqqCadtTArTShfsQg5GDrncX5bcMkZFo-dt_I7A-UTA/exec';
+        const form = document.getElementById('vehicleForm');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+
+            // Disable button to prevent double submission
+            const submitButton = form.querySelector('[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.innerText = "Submitting...";
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    alert("Success! Your details have been submitted.");
+                    form.reset();
+                    submitButton.disabled = false;
+                    submitButton.innerText = "Submit Details";
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert("Something went wrong. Please try again.");
+                    submitButton.disabled = false;
+                    submitButton.innerText = "Submit Details";
+                });
+        });
+    </script>
+</body>
+
+</html>

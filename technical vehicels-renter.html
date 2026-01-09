@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Vehicles - Renter Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 20px;
+        }
+
+        form {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 650px;
+            margin: auto;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            height: 80px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            background: #333;
+            color: white;
+            font-size: 17px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="vehicleForm">
+        <h2>Technical Vehicles - Renter (Customer) Form</h2>
+
+        <!-- Customer Details -->
+        <label>Customer Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter full name" required>
+
+        <label>Mobile Number</label>
+        <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Enter mobile number" required>
+
+        <label>Alternate Mobile (Optional)</label>
+        <input type="tel" id="alternateNumber" name="alternateNumber" placeholder="Enter alternate number">
+
+        <label>Email (Optional)</label>
+        <input type="email" id="email" name="email" placeholder="Enter email">
+
+        <label>Address</label>
+        <textarea id="address" name="address" placeholder="Enter full address"></textarea>
+        <!-- Vehicle Requirement -->
+        <h2>Vehicle Requirement Details</h2>
+
+        <label>Required Vehicle Type</label>
+        <select id="requiredType" name="requiredType" required>
+            <option value="">Select</option>
+            <option>JCB Machine</option>
+            <option>Hydra Crane</option>
+            <option>Pokland Excavator</option>
+            <option>Tractor</option>
+            <option>Truck</option>
+            <option>Tipper</option>
+            <option>Dumper</option>
+            <option>Road Roller</option>
+            <option>Concrete Mixer</option>
+            <option>Water Tanker</option>
+            <option>Loader</option>
+            <option>Compactor</option>
+            <option>Other</option>
+        </select>
+
+        <label>Work Type</label>
+        <select id="workType" name="workType" required>
+            <option>Select</option>
+            <option>Construction Work</option>
+            <option>Land Leveling</option>
+            <option>Demolition</option>
+            <option>Material Transport</option>
+            <option>Road Work</option>
+            <option>Foundation Excavation</option>
+            <option>Other Work</option>
+        </select>
+
+        <label>Work Description</label>
+        <textarea id="workDescription" name="workDescription" placeholder="Explain your work requirement..."></textarea>
+
+        <label>Preferred Vehicle Model (Optional)</label>
+        <input type="text" id="vehicleModel" name="vehicleModel" placeholder="Example: JCB 3DX, Tata Tipper, etc.">
+
+        <label>Required Date</label>
+        <input type="date" id="requiredDate" name="requiredDate">
+
+        <label>Required Time</label>
+        <input type="time" id="requiredTime" name="requiredTime">
+
+        <label>Service Duration</label>
+        <select id="serviceDuration" name="serviceDuration">
+            <option>Select</option>
+            <option>Hourly</option>
+            <option>Full Day</option>
+            <option>Multiple Days</option>
+            <option>Weekly</option>
+            <option>Monthly</option>
+        </select>
+
+        <label>Preferred Budget (Approx.)</label>
+        <input type="text" id="preferredBudget" name="preferredBudget" placeholder="Example: ₹1500/hr or ₹5000/day">
+
+        <label>Location / Site Address</label>
+        <textarea id="siteAddress" name="siteAddress"
+            placeholder="Enter site location where vehicle is required"></textarea>
+
+        <!-- Extra Requirements -->
+        <h2>Additional Requirements</h2>
+
+        <label>Driver Needed?</label>
+        <select id="driverNeeded" name="driverNeeded">
+            <option>Select</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+
+        <label>Any Special Condition or Notes</label>
+        <textarea id="specialNotes" name="specialNotes" placeholder="Write additional notes if any..."></textarea>
+
+        <button type="submit" id="submitBtn">Submit Request</button>
+    </form>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxW_YlJweyGfskKkZNXCtzcyeTzZwGmGZc5BhbQ3frjMQsATq9wQ36WpvuMEnakAss/exec'
+        const form = document.getElementById('vehicleForm')
+        const btn = document.getElementById('submitBtn')
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            btn.disabled = true
+            btn.innerHTML = "Sending..."
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    alert('Success! Your request has been submitted.')
+                    btn.disabled = false
+                    btn.innerHTML = "Submit Request"
+                    form.reset()
+                })
+                .catch(error => {
+                    console.error('Error!', error.message)
+                    alert('Something went wrong. Please try again.')
+                    btn.disabled = false
+                    btn.innerHTML = "Submit Request"
+                })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Commercial Property Seller Form</title>
+  <style>
+    :root {
+      --bg: #f5f7f8;
+      --card: #ffffff;
+      --accent: #0b6b3a;
+      --muted: #6b6f76;
+      --radius: 10px;
+      --pad: 18px;
+    }
+
+    body {
+      font-family: Inter, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      margin: 0;
+      padding: 28px;
+      color: #263238;
+    }
+
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 6px 22px rgba(10, 10, 10, 0.06);
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 20px
+    }
+
+    p.lead {
+      margin: 0 0 18px;
+      color: var(--muted)
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 6px
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="number"],
+    select,
+    textarea,
+    input[type="file"],
+    input[type="date"] {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #d7dbdf;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical
+    }
+
+    .full {
+      grid-column: 1 / -1
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 18px
+    }
+
+    button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600
+    }
+
+    .secondary {
+      background: #eceff1;
+      color: #24313a
+    }
+
+    .hint {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 6px
+    }
+
+    .preview {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px
+    }
+
+    .preview img {
+      width: 90px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid #e0e0e0
+    }
+
+    @media (max-width:720px) {
+      .grid {
+        grid-template-columns: 1fr
+      }
+
+      .actions {
+        flex-direction: column;
+        align-items: stretch
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card" role="region" aria-label="Commercial Property Seller Form">
+      <h1>Commercial Property Seller Form</h1>
+      <p class="lead">Saaf aur complete details daalein — jisse buyers ko turant accurate listing mil sake.</p>
+
+      <!-- NOTE: Set form action to your backend endpoint. enctype needed for file upload -->
+      <form id="commercialForm" class="form" method="post" enctype="multipart/form-data" novalidate>
+        <div class="grid">
+          <!-- Owner Details -->
+          <div>
+            <label for="ownerName">Owner / Contact Person <span aria-hidden="true">*</span></label>
+            <input id="ownerName" name="ownerName" type="text" placeholder="Full name" required />
+          </div>
+
+          <div>
+            <label for="mobile">Mobile Number <span aria-hidden="true">*</span></label>
+            <input id="mobile" name="mobile" type="tel" placeholder="Mobile number" required />
+          </div>
+
+          <div>
+            <label for="altMobile">Alternate Mobile (Optional)</label>
+            <input id="altMobile" name="altMobile" type="tel" placeholder="Alternate contact" />
+          </div>
+
+          <div>
+            <label for="email">Email (Optional)</label>
+            <input id="email" name="email" type="email" placeholder="example@domain.com" />
+          </div>
+
+          <!-- Property Basic -->
+          <div><label for="propertyType">Commercial Property Type <span aria-hidden="true">*</span></label>
+            <select id="propertyType" name="propertyType" required onchange="showOtherPropertyTypeInput()">
+              <option value="">Select</option>
+              <option>Shop</option>
+              <option>Office Space</option>
+              <option>Showroom</option>
+              <option>Godown / Warehouse</option>
+              <option>Commercial Building</option>
+              <option>Industrial Shed</option>
+              <option>Commercial Plot</option>
+
+              <!-- Manual entry option -->
+              <option value="other">Other (Write Manually)</option>
+            </select>
+
+            <!-- Hidden Input -->
+            <input type="text" id="otherPropertyType" placeholder="Enter commercial property type"
+              style="display:none; margin-top:10px;">
+            <script>
+              function showOtherPropertyTypeInput() {
+                const selectBox = document.getElementById("propertyType");
+                const otherInput = document.getElementById("otherPropertyType");
+
+                if (selectBox.value === "other") {
+                  otherInput.style.display = "block";
+                  otherInput.required = true;
+                } else {
+                  otherInput.style.display = "none";
+                  otherInput.required = false;
+                  otherInput.value = "";
+                }
+              }
+            </script>
+
+          </div>
+
+          <div>
+            <label for="location">Property Location <span aria-hidden="true">*</span></label>
+            <input id="location" name="location" type="text" placeholder="Area / Landmark / City" required />
+          </div>
+
+          <div>
+            <label for="totalArea">Total Area (sqft / sqm)</label>
+            <input id="totalArea" name="totalArea" type="text" placeholder="e.g. 2400 sqft or 223 sqm" />
+          </div>
+
+          <div>
+            <label for="builtUp">Built-up Area (if applicable)</label>
+            <input id="builtUp" name="builtUp" type="text" placeholder="e.g. 1800 sqft" />
+          </div>
+
+          <!-- Floor & Frontage -->
+          <div>
+            <label for="floorNo">Floor Details (if applicable)</label>
+            <input id="floorNo" name="floorNo" type="text"
+              placeholder="e.g. Ground Floor / 3rd Floor, Total Floors 5" />
+          </div>
+
+          <div>
+            <label for="frontage">Frontage / Width (for shop/showroom)</label>
+            <input id="frontage" name="frontage" type="text" placeholder="e.g. 18 ft" />
+          </div>
+
+          <div>
+            <label for="roadSize">Road Size (ft)</label>
+            <input id="roadSize" name="roadSize" type="text" placeholder="e.g. 40 ft" />
+          </div>
+
+          <div>
+            <label for="parking">Parking Available</label>
+            <select id="parking" name="parking">
+              <option>No</option>
+              <option>Yes - Open</option>
+              <option>Yes - Covered</option>
+              <option>Yes - Both</option>
+            </select>
+          </div>
+
+          <!-- Age & Price -->
+          <div>
+            <label for="age">Property Age / Condition</label>
+            <select id="age" name="age">
+              <option>New</option>
+              <option>1 - 5 Years</option>
+              <option>5 - 10 Years</option>
+              <option>10+ Years</option>
+              <option>Under Construction</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="price">Expected Selling Price (₹) <span aria-hidden="true">*</span></label>
+            <input id="price" name="price" type="text" placeholder="e.g. 75,00,000" required />
+          </div>
+
+          <div>
+            <label for="negotiable">Negotiable?</label>
+            <select id="negotiable" name="negotiable">
+              <option>Yes</option>
+              <option>No</option>
+              <option>Partially</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="docStatus">Document Status</label>
+            <select id="docStatus" name="docStatus">
+              <option>Clear Title</option>
+              <option>Under Loan</option>
+              <option>Disputed / Under Verification</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <!-- Facilities -->
+          <div class="full">
+            <label>Amenities / Facilities</label>
+            <textarea id="amenities" name="amenities"
+              placeholder="Parking, Electricity, Water, Fire Safety, Loading/Unloading, Security, etc."></textarea>
+            <p class="hint">Comma separated is fine (helps filtering): e.g. Parking, 24x7 Electricity, Fire Safety.</p>
+          </div>
+
+
+          <!-- Legal & Documentation Section -->
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+              <i class="fas fa-file-contract mr-2 text-orange-600"></i> Legal & Documentation
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="input-icon">
+                <i class="fas fa-file-alt"></i>
+                <select name="khataType"
+                  class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  required>
+                  <option value="">Khata Type</option>
+                  <option value="Sabik">Sabik</option>
+                  <option value="Hal">Hal</option>
+                </select>
+              </div>
+              <div class="input-icon">
+                <i class="fas fa-ruler-combined"></i>
+                <input type="text" name="Khatanumber" placeholder="Khata Number(e.g., 1200, 3400)"
+                  class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  required />
+              </div>
+
+              <div class="input-icon">
+                <i class="fas fa-ruler-combined"></i>
+                <input type="text" name="plotNumber" placeholder="Plot Number (e.g., B1, C2 )"
+                  class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  required />
+              </div>
+
+
+              <div class="input-icon">
+                <i class="fas fa-exchange-alt"></i>
+                <select name="Religious"
+                  class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  required>
+                  <option value="">Religious Restriction?</option>
+                  <option value="Hindu">Hindu</option>
+                  <option value="Muslim">Muslim</option>
+                  <option value="Sikh">Sikh</option>
+                  <option value="Christian">Christian</option>
+                  <option value="Buddh"> budh</option>
+                  <option value="Jain">Jain</option>
+                </select>
+              </div>
+
+
+              <div class="input-icon">
+                <i class="fas fa-exchange-alt"></i>
+                <select name="Cast"
+                  class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  required>
+                  <option value="">Caste Restriction?</option>
+                  <option value="General">General</option>
+                  <option value="OBC (Other Backward Classes)">OBC (Other Backward Classes)</option>
+                  <option value="SC (Scheduled Cast)">SC (Scheduled Cast)</option>
+                  <option value="ST(Scheduled Type)">ST (Scheduled Type)</option>
+
+                </select>
+              </div>
+
+              <div class="input-icon">
+                <i class="fas fa-exchange-alt"></i>
+                <select name="mutation"
+                  class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  required>
+                  <option value="">Mutation Done?</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div class="input-icon">
+                <i class="fas fa-border-all"></i>
+                <select name="boundary"
+                  class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  required>
+                  <option value="">Boundary Wall?</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="full">
+            <label for="additional">Additional Information</label>
+            <textarea id="additional" name="additional"
+              placeholder="Facing, rental income if rented, nearby landmarks, reason for sale, loan outstanding etc."></textarea>
+          </div>
+
+          <div>
+            <label for="availableDate">Available Date / Possession</label>
+            <input id="availableDate" name="availableDate" type="date" />
+          </div>
+
+          <div>
+            <label for="source">How did you hear about us?</label>
+            <select id="source" name="source">
+              <option>Google</option>
+              <option>WhatsApp</option>
+              <option>Social Media</option>
+              <option>Referral</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+        </div> <!-- end grid -->
+
+        <div class="actions full">
+          <button type="submit">Submit Property</button>
+          <button type="button" class="secondary" id="clearBtn">Clear Form</button>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+ <script>
+  const form = document.getElementById('commercialForm');
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbw_Ck5fpxY3dewVPP_J66-fssZa4fR3YQ8JnzipvqbrKmrTKNGk8CJkU1pgMC1-if3b/exec'; // PASTE YOUR URL HERE
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    
+    // Change button text to show progress
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerText;
+    submitBtn.innerText = "Submitting...";
+    submitBtn.disabled = true;
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+        alert("Success! Property submitted.");
+        submitBtn.innerText = originalText;
+        submitBtn.disabled = false;
+        form.reset(); // Clear the form
+      })
+      .catch(error => {
+        console.error('Error!', error.message);
+        alert("Error submitting form. Please try again.");
+        submitBtn.disabled = false;
+      });
+  });
+
+  // Clear Form Button Logic
+  document.getElementById('clearBtn').addEventListener('click', () => {
+    if(confirm("Are you sure you want to clear the form?")) {
+      form.reset();
+    }
+  });
+</script>
+</body>
+
+</html>
+<!---done-->

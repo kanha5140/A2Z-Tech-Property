@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plot Seller Form</title>
+  <link rel="icon" href="logo.png" type="image/png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #eacd66 0%, #ffe75d 100%);
+      min-height: 100vh;
+    }
+
+    .form-section {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .input-icon {
+      position: relative;
+    }
+
+    .input-icon i {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #6b7280;
+    }
+
+    .input-icon input,
+    .input-icon select {
+      padding-left: 40px;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      transition: transform 0.2s ease;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 p-4">
+
+  <div class="max-w-2xl mx-auto bg-white p-6 shadow-lg rounded-lg">
+    <h2 class="text-2xl font-bold mb-4 text-center">Plot Seller Form</h2>
+
+    <form id="plotForm" class="space-y-6"
+      data-script-url="https://script.google.com/macros/s/AKfycbxDk1D5yoVfqPk6EtI6lqdkj-RdIROCHgqUwjYVhwM3wmSQMMCshdBxcLwIHMEDcrBg/exec">
+      <!-- Personal Details Section -->
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+          <i class="fas fa-user mr-2 text-blue-600"></i> Personal Details
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="input-icon">
+            <i class="fas fa-user"></i>
+            <input type="text" id="fullName" name="fullName" placeholder="Full Name"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required />
+          </div>
+          <div class="input-icon">
+            <i class="fas fa-phone"></i>
+            <input type="number" id="mobile" name="mobile" placeholder="Mobile Number"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required />
+          </div>
+          <div class="input-icon">
+            <i class="fas fa-phone-alt"></i>
+            <input type="number" name="altMobile" placeholder="Alternate Mobile"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+          </div>
+          <div class="input-icon">
+            <i class="fas fa-envelope"></i>
+            <input type="email" name="email" placeholder="Email Address"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Plot Details Section -->
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+          <i class="fas fa-map-marked-alt mr-2 text-green-600"></i> Plot Details
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="input-icon">
+            <i class="fas fa-map-marker-alt"></i>
+            <input type="text" name="location" placeholder="Plot Location (City, Area)"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required />
+          </div>
+          <div class="input-icon">
+            <i class="fas fa-home"></i>
+
+            <select id="plotType" name="plotType"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required onchange="showOtherPlotType()">
+
+              <option value="">Select Plot Type</option>
+              <option value="Residential">Residential</option>
+              <option value="Commercial">Commercial</option>
+              <option value="Industrial">Industrial</option>
+              <option value="Agricultural">Agricultural</option>
+
+              <!-- Manual Entry -->
+              <option value="other">Other (Write Manually)</option>
+            </select>
+          </div>
+          <script>
+            function showOtherPlotType() {
+              const selectBox = document.getElementById("plotType");
+              const otherInput = document.getElementById("otherPlotTypeInput");
+
+              if (selectBox.value === "other") {
+                otherInput.style.display = "block";
+                otherInput.required = true;
+              } else {
+                otherInput.style.display = "none";
+                otherInput.required = false;
+                otherInput.value = "";
+              }
+            }
+          </script>
+
+          <!-- Hidden Input Box -->
+          <input type="text" id="otherPlotTypeInput"
+            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mt-2"
+            placeholder="Enter plot type" style="display:none;">
+          <div class="input-icon">
+            <i class="fas fa-ruler-combined"></i>
+            <input type="text" name="plotSize" placeholder="Plot Size (e.g., 1200 sq ft)"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required />
+          </div>
+          <div class="input-icon">
+            <i class="fas fa-expand-arrows-alt"></i>
+            <input type="text" name="plotDimensions" placeholder="Plot Dimensions (e.g., 30x40 ft)"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required />
+          </div>
+          <div class="input-icon">
+            <i class="fas fa-compass"></i>
+            <select name="facing"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required>
+              <option value="">Select Facing</option>
+              <option value="East">East</option>
+              <option value="West">West</option>
+              <option value="North">North</option>
+              <option value="South">South</option>
+
+              <option value="Northeast">Northeast</option>
+              <option value="Northwest">Northwest</option>
+              <option value="Southeast">Southeast</option>
+              <option value="Southwest">Southwest</option>
+
+            </select>
+          </div>
+          <div class="input-icon">
+            <i class="fas fa-road"></i>
+            <select name="roadSize"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required>
+              <option value="">Select Road Size</option>
+              <option value="10 ft">10 ft</option>
+              <option value="20 ft">20 ft</option>
+              <option value="30 ft">30 ft</option>
+              <option value="40 ft">40 ft</option>
+              <option value="60 ft">60 ft</option>
+              <option value="80 ft">80 ft</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legal & Documentation Section -->
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+          <i class="fas fa-file-contract mr-2 text-orange-600"></i> Legal & Documentation
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="input-icon">
+            <i class="fas fa-file-alt"></i>
+            <select name="khataType" id="khataType"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required onchange="showKhataOther()">
+
+              <option value="">Khata Type</option>
+              <option value="Sabik">Sabik</option>
+              <option value="Hal">Hal</option>
+              <option value="Kisam">Kisam</option>
+              <option value="other">Other (Specify)</option>
+            </select>
+
+            <input type="text" id="khataOther" name="khataOther" placeholder="Please specify Khata Type"
+              class="w-full border border-gray-300 p-3 rounded-lg mt-2" style="display:none;">
+
+            <script>
+              function showKhataOther() {
+                const select = document.getElementById("khataType");
+                const input = document.getElementById("khataOther");
+
+                if (select.value === "other") {
+                  input.style.display = "block";
+                  input.required = true;
+                } else {
+                  input.style.display = "none";
+                  input.required = false;
+                  input.value = "";
+                }
+              }
+            </script>
+
+          </div>
+          <div class="input-icon">
+            <i class="fas fa-file-alt"></i>
+            <input type="text" name="Khatanumber" placeholder="Khata Number(e.g., 1200, 3400)"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required />
+          </div>
+
+          <div class="input-icon">
+            <i class="fas fa-file-alt"></i>
+            <input type="text" name="plotNumber" placeholder="Plot Number (e.g., B1, C2 )"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required />
+          </div>
+
+
+          <div class="input-icon">
+            <i class="fa-user"></i>
+            <select name="Religious"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required>
+              <option value="">Religious </option>
+              <option value="Hindu">Hindu</option>
+              <option value="Muslim">Muslim</option>
+              <option value="Sikh">Sikh</option>
+              <option value="Christian">Christian</option>
+              <option value="Buddh"> budh</option>
+              <option value="Jain">Jain</option>
+            </select>
+          </div>
+
+
+          <div class="input-icon">
+            <i class="fa-cogs"></i>
+            <select name="Cast"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required>
+              <option value="">Caste Restriction?</option>
+              <option value="General">General</option>
+              <option value="OBC (Other Backward Classes)">OBC (Other Backward Classes)</option>
+              <option value="SC (Scheduled Cast)">SC (Scheduled Cast)</option>
+              <option value="ST(Scheduled Type)">ST (Scheduled Type)</option>
+
+            </select>
+          </div>
+
+          <div class="input-icon">
+            <i class="fas fa-exchange-alt"></i>
+            <select name="mutation"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required>
+              <option value="">Mutation Done?</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+          <div class="input-icon">
+            <i class="fas fa-border-all"></i>
+            <select name="boundary"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required>
+              <option value="">Boundary Wall?</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pricing & Availability Section -->
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+          <i class="fas fa-rupee-sign mr-2 text-green-600"></i> Pricing & Availability
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="input-icon">
+            <i class="fas fa-money-bill-wave"></i>
+            <input type="text" name="price" placeholder="Expected Price (e.g., ₹50,00,000)"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required />
+          </div>
+          <div class="input-icon">
+            <i class="fas fa-handshake"></i>
+            <select name="negotiable"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              <option value="">Negotiable?</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="Slightly">Slightly</option>
+            </select>
+          </div>
+          <div class="input-icon">
+            <i class="fas fa-clock"></i>
+            <input type="text" name="urgency" placeholder="Urgency (e.g., Immediate, Within a month)"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+          </div>
+          <div class="input-icon">
+            <i class="fas fa-calendar-alt"></i>
+            <input type="text" name="siteVisit" placeholder="Preferred Site Visit Date/Time"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Information -->
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+          <i class="fas fa-info-circle mr-2 text-blue-600"></i> Additional Information
+        </h3>
+        <div class="input-icon">
+          <i class="fas fa-bullhorn"></i>
+          <input type="text" name="heard" placeholder="How did you hear about us?"
+            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+        </div>
+        <textarea name="additionalNotes"
+          placeholder="Any additional notes or special features (e.g., water supply, electricity, nearby amenities)"
+          class="w-full border border-gray-300 p-3 rounded-lg mt-4 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          rows="4"></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit"
+        class="w-full submit-btn text-white p-4 rounded-lg font-semibold text-lg hover:shadow-lg transition duration-300">
+        <i class="fas fa-paper-plane mr-2"></i> Submit Your Plot Listing
+      </button>
+
+      <p id="successMsg" class="text-green-600 text-center font-semibold hidden mt-4">
+        <i class="fas fa-check-circle mr-2"></i> Form submitted successfully! We'll get back to you soon.
+      </p>
+      <p id="errorMsg" class="text-red-600 text-center font-semibold hidden mt-4">
+        <i class="fas fa-exclamation-triangle mr-2"></i> Error! Please try again.
+      </p>
+    </form>
+  </div>
+  <script>
+    // Function to handle form submission
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('plotForm');
+      const scriptURL = form.getAttribute('data-script-url');
+      const successMsg = document.getElementById('successMsg');
+      const errorMsg = document.getElementById('errorMsg');
+      const submitButton = form.querySelector('button[type="submit"]');
+      const initialButtonText = submitButton.innerHTML;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault(); // Stop the default form submission
+
+        // Clear previous messages
+        successMsg.classList.add('hidden');
+        errorMsg.classList.add('hidden');
+
+        // Disable button and show loading state
+        submitButton.disabled = true;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Submitting...';
+
+        // Gather form data
+        const formData = new FormData(form);
+
+        // Use fetch to send data to Google Apps Script
+        fetch(scriptURL, {
+          method: 'POST',
+          body: formData,
+          mode: 'cors' // Essential for cross-origin requests
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(() => {
+            successMsg.classList.remove('hidden');
+            form.reset();
+          })
+          .catch(error => {
+            console.error('Submission Error:', error);
+            errorMsg.classList.remove('hidden');
+          })
+          .finally(() => {
+            submitButton.disabled = false;
+            submitButton.innerHTML = initialButtonText;
+          });
+
+      });
+    });
+  </script>
+</body>
+
+</html>
+<!---done-->

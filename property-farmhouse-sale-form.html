@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm House Seller Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            margin: 0;
+            padding: 25px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-top: 16px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-top: 5px;
+            font-size: 15px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 28px;
+            font-size: 17px;
+            font-weight: 600;
+            background: #1c7c2e;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #145a22;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h2>Farm House Seller Form</h2>
+
+        <form>
+
+            <label>Owner Name</label>
+            <input type="text" id="ownerName" name="ownerName" placeholder="Enter full name" required>
+
+            <label>Mobile Number</label>
+            <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Enter mobile number" required>
+
+            <label>Email (Optional)</label>
+            <input type="email" id="email" name="email" placeholder="Enter email">
+
+            <label>Farm House Location</label>
+            <textarea rows="3" id="farmHouseLocation" name="farmHouseLocation"
+                placeholder="Village, Area, Tehsil, Landmark" required></textarea>
+
+            <label>Total Land Area</label>
+            <input type="text" id="totalLandArea" name="totalLandArea" placeholder="Example: 1 Acre / 30 Decimal"
+                required>
+
+            <label>Farm House Built-up Area</label>
+            <input type="text" id="builtUpArea" name="builtUpArea" placeholder="Example: 800 sqft / 1500 sqft">
+            <label for="farmHouseType">Farm House Type <span aria-hidden="true">*</span></label>
+            <select id="farmHouseType" name="farmHouseType" required>
+                <option value="">Select</option>
+                <option>Raw Land + Small House</option>
+                <option>Fully Developed Farm House</option>
+                <option>Under Construction</option>
+                <option>Luxury Weekend Home</option>
+                <option>Agricultural Land with Farm House</option>
+            </select>
+
+
+            <label>Number of Bedrooms</label>
+            <select id="NumberBedroom" name="NumberBedroom">
+                <option>1 BHK</option>
+                <option>2 BHK</option>
+                <option>3 BHK</option>
+                <option>More</option>
+            </select>
+
+            <label>Water Source</label>
+            <select id="waterSource" name="waterSource">
+                <option>Borewell</option>
+                <option>Well</option>
+                <option>River / Canal</option>
+                <option>Panchayat Water</option>
+                <option>Multiple Sources</option>
+            </select>
+
+            <label>Electricity Connection</label>
+            <select id="electricityConnection" name="electricityConnection">
+                <option>Yes</option>
+                <option>No</option>
+                <option>Solar Only</option>
+            </select>
+
+            <label>Boundary / Fencing</label>
+            <select id="boundaryFencing" name="boundaryFencing">
+                <option>No Boundary</option>
+                <option>Brick Wall</option>
+                <option>Wire Fencing</option>
+                <option>Mixed Fencing</option>
+            </select>
+
+            <label>Road Connectivity</label>
+            <select id="roadConnectivity" name="roadConnectivity">
+                <option>Village Road</option>
+                <option>Panchayat Road</option>
+                <option>Pitch Road</option>
+                <option>Highway Touch</option>
+                <option>Kaccha Road</option>
+            </select>
+
+            <label>Distance From Main City (km)</label>
+            <input type="text" id="DistanceFormCity" name="DistanceFormCity" placeholder="Example: 8 km / 15 km">
+
+            <label>Soil Type (Optional)</label>
+            <input type="text" id="soilType" name="soilType" placeholder="Red soil, black soil, mix soil">
+
+            <label>Irrigation Facilities</label>
+            <textarea rows="2" id="Irrigation" name="irrigation"
+                placeholder="Drip irrigation, sprinkler, pipeline etc."></textarea>
+
+            <label>Farm Assets / Facilities</label>
+            <textarea rows="3" id="farmAssets" name="farmAssets"
+                placeholder="Gated entry, garden, pool, cowshed, fruit trees, storage etc."></textarea>
+
+            <label>Expected Selling Price (₹)</label>
+            <input type="text" id="expectedSellingPrice" name="expectedSellingPrice"
+                placeholder="Total amount or per acre price" required>
+
+            <label>Urgency of Sale</label>
+            <select id="urgencyOfSale" name="urgencyOfSale">
+                <option>Immediate</option>
+                <option>Within 1 Month</option>
+                <option>1–3 Months</option>
+                <option>Not Urgent</option>
+            </select>
+
+            <!-- Legal & Documentation Section -->
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-file-contract mr-2 text-orange-600"></i> Legal & Documentation
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="input-icon">
+                        <i class="fas fa-file-alt"></i>
+                        <select name="khataType" id="khataType"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required onchange="showKhataOther()">
+
+                            <option value="">Khata Type</option>
+                            <option value="Sabik">Sabik</option>
+                            <option value="Hal">Hal</option>
+                            <option value="Kisam">Kisam</option>
+                            <option value="other">Other (Specify)</option>
+                        </select>
+
+                        <input type="text" id="khataOther" name="khataOther" placeholder="Please specify Khata Type"
+                            class="w-full border border-gray-300 p-3 rounded-lg mt-2" style="display:none;">
+
+                        <script>
+                            function showKhataOther() {
+                                const select = document.getElementById("khataType");
+                                const input = document.getElementById("khataOther");
+
+                                if (select.value === "other") {
+                                    input.style.display = "block";
+                                    input.required = true;
+                                } else {
+                                    input.style.display = "none";
+                                    input.required = false;
+                                    input.value = "";
+                                }
+                            }
+                        </script>
+                    </div>
+                    <div class="input-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                        <input type="text" id="Khatanumber" name="Khatanumber"
+                            placeholder="Khata Number(e.g., 1200, 3400)"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required />
+                    </div>
+
+                    <div class="input-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                        <input type="text" id="plotNumber" name="plotNumber" placeholder="Plot Number (e.g., B1, C2 )"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required />
+                    </div>
+
+
+                    <div class="input-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                        <select id="Religious" name="Religious"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required>
+                            <option value="">Religious Restriction?</option>
+                            <option value="Hindu">Hindu</option>
+                            <option value="Muslim">Muslim</option>
+                            <option value="Sikh">Sikh</option>
+                            <option value="Christian">Christian</option>
+                            <option value="Buddh"> budh</option>
+                            <option value="Jain">Jain</option>
+                        </select>
+                    </div>
+
+
+                    <div class="input-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                        <select id="Cast" name="Cast"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required>
+                            <option value="">Caste Restriction?</option>
+                            <option value="General">General</option>
+                            <option value="OBC (Other Backward Classes)">OBC (Other Backward Classes)</option>
+                            <option value="SC (Scheduled Cast)">SC (Scheduled Cast)</option>
+                            <option value="ST(Scheduled Type)">ST (Scheduled Type)</option>
+
+                        </select>
+                    </div>
+
+                    <div class="input-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                        <select id="mutation" name="mutation"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required>
+                            <option value="">Mutation Done?</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="input-icon">
+                        <i class="fas fa-border-all"></i>
+                        <select id="boundary" name="boundary"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required>
+                            <option value="">Boundary Wall?</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <label>Additional Information</label>
+            <textarea id="additionalInfo" name="additionalInfo" rows="3"
+                placeholder="Any special features, legal updates, loan etc."></textarea>
+
+            <button type="submit">Submit Property</button>
+
+        </form>
+        <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzkdAoRWH6FLq4iLWG5jlKLI54XMvU3DYX__eRwaO5p-oQigr310snl2hVAxnNt4ZA/exec';
+            const form = document.querySelector('form');
+
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+
+                // Show a loading state (Optional)
+                const submitBtn = form.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = "Submitting...";
+
+                fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                    .then(response => {
+                        alert("Property Submitted Successfully!");
+                        form.reset();
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = "Submit Property";
+                    })
+                    .catch(error => {
+                        console.error('Error!', error.message);
+                        alert("Something went wrong. Please try again.");
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = "Submit Property";
+                    });
+            });
+        </script>
+
+    </div>
+</body>
+
+</html>

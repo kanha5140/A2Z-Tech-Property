@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industrial Property Seller Form</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 25px;
+    }
+
+    .form-box {
+      max-width: 750px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 15px;
+      display: block;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      margin-top: 25px;
+      background: #0072ff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0059cc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="form-box">
+    <h2>Industrial Property Seller Form</h2>
+
+    <form>
+
+      <!-- Owner Section -->
+      <label>Owner / Seller Name</label>
+      <input type="text" placeholder="Enter full name" required>
+
+      <label>Mobile Number</label>
+      <input type="tel" placeholder="Enter mobile number" required>
+
+      <label>Email (Optional)</label>
+      <input type="email" placeholder="Enter email">
+
+      <!-- Industrial Property Details -->
+      <label for="industrialType">Industrial Property Type Required</label>
+
+      <select id="industrialType" name="industrialType" required onchange="showOtherIndustrial()">
+        <option value="">Select</option>
+        <option>Industrial Land</option>
+        <option>Industrial Shed</option>
+        <option>Factory Building</option>
+        <option>Warehouse / Godown</option>
+        <option>Manufacturing Unit</option>
+        <option>Cold Storage</option>
+        <option value="other">Other (Specify)</option>
+      </select>
+
+      <input type="text" id="industrialOther" name="industrialOther" placeholder="Please specify"
+        style="display:none; margin-top:8px;">
+
+
+      <script>
+        function showOtherIndustrial() {
+          const select = document.getElementById("industrialType");
+          const input = document.getElementById("industrialOther");
+
+          if (select.value === "other") {
+            input.style.display = "block";
+            input.required = true;
+          } else {
+            input.style.display = "none";
+            input.required = false;
+            input.value = "";
+          }
+        }
+      </script>
+
+
+      <label>Location</label>
+      <input type="text" placeholder="Area / Industrial Estate / City" required>
+
+      <label>Total Land Area</label>
+      <input type="text" placeholder="Example: 10,000 sqft / 1 acre" required>
+
+      <label>Built-up Area (If Constructed)</label>
+      <input type="text" placeholder="Example: 5,000 sqft shed / RCC building">
+
+      <label>Shed Height (If Applicable)</label>
+      <input type="text" placeholder="Example: 18 ft / 25 ft">
+
+      <label>Crane Provision / EOT Crane Capacity</label>
+      <select>
+        <option>No</option>
+        <option>5 Ton</option>
+        <option>10 Ton</option>
+        <option>15 Ton</option>
+        <option>20 Ton+</option>
+      </select>
+
+      <label>Power Load Available</label>
+      <select>
+        <option>Basic Connection</option>
+        <option>10 HP</option>
+        <option>25 HP</option>
+        <option>50 HP</option>
+        <option>100 HP+</option>
+      </select>
+
+      <label>Road Access</label>
+      <select>
+        <option>20 ft Road</option>
+        <option>30 ft Road</option>
+        <option>40 ft Road</option>
+        <option>Heavy Vehicle Entry</option>
+        <option>Highway Touch</option>
+      </select>
+
+      <label>Parking & Loading Area</label>
+      <select>
+        <option>No Parking</option>
+        <option>Small Vehicle Parking</option>
+        <option>Truck Parking</option>
+        <option>Separate Loading/Unloading Zone</option>
+      </select>
+
+      <label>Water Availability</label>
+      <select>
+        <option>Borewell</option>
+        <option>Industrial Water Supply</option>
+        <option>No Water Source</option>
+      </select>
+
+      <label>Documents Available</label>
+      <select required>
+        <option>Clear Title</option>
+        <option>Leasehold Industrial Plot</option>
+        <option>Freehold Land</option>
+        <option>Environment NOC Available</option>
+        <option>Factory License Available</option>
+        <option>All Documents Available</option>
+      </select>
+
+      <label>Expected Selling Price (₹)</label>
+      <input type="text" placeholder="Example: ₹50 lakh / ₹2 crore" required>
+
+      <label>Negotiable?</label>
+      <select>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+
+      <!-- Legal & Documentation Section -->
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+          <i class="fas fa-file-contract mr-2 text-orange-600"></i> Legal & Documentation
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="input-icon">
+            <i class="fas fa-file-alt"></i>
+            <select name="khataType" id="khataType"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required onchange="showKhataOther()">
+
+              <option value="">Khata Type</option>
+              <option value="Sabik">Sabik</option>
+              <option value="Hal">Hal</option>
+              <option value="Kisam">Kisam</option>
+              <option value="other">Other (Specify)</option>
+            </select>
+
+            <input type="text" id="khataOther" name="khataOther" placeholder="Please specify Khata Type"
+              class="w-full border border-gray-300 p-3 rounded-lg mt-2" style="display:none;">
+
+            <script>
+              function showKhataOther() {
+                const select = document.getElementById("khataType");
+                const input = document.getElementById("khataOther");
+
+                if (select.value === "other") {
+                  input.style.display = "block";
+                  input.required = true;
+                } else {
+                  input.style.display = "none";
+                  input.required = false;
+                  input.value = "";
+                }
+              }
+            </script>
+          </div>
+          <div class="input-icon">
+            <i class="fas fa-ruler-combined"></i>
+            <input type="text" name="Khatanumber" placeholder="Khata Number(e.g., 1200, 3400)"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required />
+          </div>
+
+          <div class="input-icon">
+            <i class="fas fa-ruler-combined"></i>
+            <input type="text" name="plotNumber" placeholder="Plot Number (e.g., B1, C2 )"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required />
+          </div>
+
+
+          <div class="input-icon">
+            <i class="fas fa-exchange-alt"></i>
+            <select name="Religious"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required>
+              <option value="">Religious Restriction?</option>
+              <option value="Hindu">Hindu</option>
+              <option value="Muslim">Muslim</option>
+              <option value="Sikh">Sikh</option>
+              <option value="Christian">Christian</option>
+              <option value="Buddh"> budh</option>
+              <option value="Jain">Jain</option>
+            </select>
+          </div>
+
+
+          <div class="input-icon">
+            <i class="fas fa-exchange-alt"></i>
+            <select name="Cast"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required>
+              <option value="">Caste Restriction?</option>
+              <option value="General">General</option>
+              <option value="OBC (Other Backward Classes)">OBC (Other Backward Classes)</option>
+              <option value="SC (Scheduled Cast)">SC (Scheduled Cast)</option>
+              <option value="ST(Scheduled Type)">ST (Scheduled Type)</option>
+
+            </select>
+          </div>
+
+          <div class="input-icon">
+            <i class="fas fa-exchange-alt"></i>
+            <select name="mutation"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required>
+              <option value="">Mutation Done?</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+          <div class="input-icon">
+            <i class="fas fa-border-all"></i>
+            <select name="boundary"
+              class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              required>
+              <option value="">Boundary Wall?</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <label>Additional Information (Optional)</label>
+      <textarea rows="4" placeholder="Boundary, security, construction details, etc."></textarea>
+
+      <button type="submit">Submit</button>
+
+    </form>
+
+  </div>
+
+</body>
+
+</html>

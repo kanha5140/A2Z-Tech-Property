@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties - BODS INFRA TECH SOLUTION</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* BASIC STYLE */
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img1.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        header img {
+            width: 80px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin: 5px 0;
+            font-weight: 300;
+        }
+
+
+        /* SOCIAL BUTTONS */
+        .social-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .social-buttons a {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp {
+            background: #25D366;
+        }
+
+        .facebook {
+            background: #3b5998;
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, #C13584, #E1306C, #F56040);
+        }
+
+        .linkedin {
+            background: #0077b5;
+        }
+
+        .twitter {
+            background: #1da1f2;
+        }
+
+        .social-buttons a:hover {
+            transform: scale(1.1);
+        }
+
+        /* PROPERTIES SECTION */
+        .properties-section {
+            padding: 40px 20px;
+            text-align: center;
+            background: white;
+        }
+
+        .properties-section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .property-card {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            text-align: left;
+        }
+
+        .property-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .property-card h3 {
+            color: #ff8c00;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .property-card p {
+            margin-bottom: 15px;
+        }
+
+        .property-card .buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .property-card button {
+            background: linear-gradient(45deg, #ff8c00, #ff6b35);
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 140, 0, 0.3);
+        }
+
+        .property-card button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 140, 0, 0.4);
+        }
+
+        /* CONTACT */
+        #contact {
+            padding: 40px 20px;
+            text-align: center;
+            background: white;
+        }
+
+        #contact h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #contact p {
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+
+        #contact button {
+            background: linear-gradient(45deg, #ff8c00, #ff6b35);
+            border: none;
+            padding: 12px 25px;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+
+            .property-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- SOCIAL BUTTONS -->
+    <div class="social-buttons">
+        <a href="https://wa.me/+918847806339" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://facebook.com" class="facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://twitter.com" class="twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="logo.png" alt="BODS INFRA Logo">
+            <a href="index.html">A2ZTechProperty </a>
+        </div>
+         <ul class="nav-menu" id="navMenu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="owr-Property.html" class="nav-link">Property</a></li>
+            <li class="nav-item"><a href="agent-registration.html" class="nav-link">Agent</a></li>
+            <!----
+            <li class="nav-item"><a href="service.html" class="nav-link">Services</a></li>            
+            <li class="nav-item"><a href="meterials.html" class="nav-link">Meterial</a></li>
+            <li class="nav-item"><a href="technical-vehicals.html" class="nav-link">Technical Vehicles</a></li>
+---->
+            <li class="nav-item"><a href="investors.html" class="nav-link">Investors</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <style>
+        /* --- NEW NAVIGATION CSS --- */
+        /* NAVIGATION BAR */
+        .navbar {
+            background-color: white;
+            /* White background for navigation */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            /* Softer shadow */
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 40px;
+            /* Adjust logo size as needed */
+            margin-right: 10px;
+        }
+
+        .navbar-logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff8c00;
+            /* Orange color for the logo text */
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            margin-left: 25px;
+        }
+
+        .nav-link {
+            color: #333;
+            /* Darker text for white background */
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ff8c00;
+        }
+
+        /* HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            /* Hidden by default on desktop */
+            cursor: pointer;
+            font-size: 1.8rem;
+            /* Slightly larger icon */
+            color: #333;
+            /* Dark color for the icon */
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+
+            /* Mobile Navigation Styles */
+            .hamburger {
+                display: block;
+                /* Show hamburger on mobile */
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                /* Below the nav bar */
+                left: 0;
+                background-color: white;
+                /* White background for mobile menu */
+                border-top: 1px solid #eee;
+                /* Light border */
+                text-align: center;
+                padding: 10px 0;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                /* Shadow for dropdown */
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-item {
+                margin: 10px 0;
+            }
+
+            .nav-link {
+                padding: 10px 0;
+                display: block;
+                color: #333;
+                /* Dark text on white background */
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+
+            .section-2 {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .collab-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slideshow-container {
+                max-width: 100%;
+            }
+
+            iframe {
+                height: 250px;
+            }
+        }
+
+        @media (min-width: 700px) {
+            .section-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+
+    <script>
+        // --- NEW HAMBURGER MENU SCRIPT ---
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked (for mobile)
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                navMenu.classList.remove('active');
+            }
+        }));
+    </script>
+
+    <!-- PROPERTIES SECTION -->
+    <section class="properties-section">
+        <h2>Our Properties</h2>
+
+        <div class="property-card">
+            <h3>Plots</h3>
+            <p>Available plots for residential, commercial, or agricultural use in various locations in Odisha. Ideal
+                for building your own property.</p>
+            <div class="buttons">
+                <a href="plot-ouner-form.html"><button>For Sale</button></a>
+                <a href="plot-pur-form.html"><button>For Purchase</button></a>
+
+            </div>
+        </div>
+        <div class="property-grid">
+            <div class="property-card">
+                <h3>Residential</h3>
+                <p>Discover a wide range of residential properties in Odisha, from cozy apartments to luxurious villas.
+                    Perfect for families and individuals looking for their dream home.</p>
+                <div class="buttons">
+                    <a href="property-residential-seller-form.html"><button>For Seller</button></a>
+                    <a href="property-residential-buyer-form.html"><button>For Buyer</button></a>
+                    <a href="property-residential-renter-form.html"><button>For Rent</button></a>
+                </div>
+            </div>
+            <div class="property-card">
+                <h3>Commercial</h3>
+                <p>Explore commercial spaces ideal for businesses, including offices, shops, and warehouses in prime
+                    locations across Odisha.</p>
+                <div class="buttons">
+                    <a href="property-commercial-for-sale.html"><button>For Sale</button></a>
+                    <a href="property-commercial-for-purchese.html"><button>For Purchase</button></a>
+                    <a href="property-comercial-renter form.html"><button>For Rent</button></a>
+                </div>
+            </div>
+            <div class="property-card">
+                <h3>Industrial</h3>
+                <p>Find industrial properties such as factories, warehouses, and land for manufacturing and logistics in
+                    Odisha.</p>
+                <div class="buttons">
+                    <a href="property-industry-seler-form.html"><button>For Sale</button></a>
+                    <a href="property-industry-purcheser-form.html"><button>For Purchase</button></a>
+                    <a href="property-industrial-rent form.html"><button>For Rent</button></a>
+
+                </div>
+            </div>
+            <div class="property-card">
+                <h3>Farm House</h3>
+                <p>Luxurious farm houses and agricultural lands in serene locations in Odisha, perfect for weekend
+                    getaways or farming.</p>
+                <div class="buttons">
+                    <a href="property-farmhouse-sale-form.html"><button>For Sale</button></a>
+                    <a href="property-farmhouse-purchase-form.html"><button>For Purchase</button></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FOOTER -->
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3693.4038860413884!2d84.84742397413797!3d22.22474964563192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a20196024b40181%3A0xbd454f47a0bc95e4!2sBODS%20Infratech%20private%20limited!5e0!3m2!1sen!2sin!4v1763457271822!5m2!1sen!2sin"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <p>📍 A/3, Janaki Market Complex, Rourkela, Odisha</p>
+        <p>📞 8847806339</p>
+        <p>📧 bodsinfratech.care@gmail.com</p>
+        <a href="https://wa.me/+918847806339"><button>Contact Us</button></a>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h3>A2ZTechProperty</h3>
+                <p>Your trusted partner for premium properties in Odisha. Discover apartments, plots, buildings, and
+                    commercial spaces tailored to your needs.</p>
+                <p>&copy; 2024 A2ZTechProperty. All rights reserved.</p>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="properties.html">Properties</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="agent-registration.html">Agent Registration</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +91 8847806339</p>
+                <p><i class="fas fa-envelope"></i> info@a2ztechproperty.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Bhubaneswar, Odisha, India</p>
+            </div>
+            <div class="footer-section social">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="https://wa.me/+918847806339" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://facebook.com" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" class="instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://twitter.com" class="twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <style>
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, #222 0%, #333 100%);
+            color: white;
+            padding: 40px 20px 20px;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            color: #ff8c00;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff8c00;
+        }
+
+        .footer-section.contact p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-section.contact i {
+            color: #ff8c00;
+            width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-links .whatsapp {
+            background: #25D366;
+        }
+
+        .social-links .facebook {
+            background: #3b5998;
+        }
+
+        .social-links .instagram {
+            background: linear-gradient(45deg, #C13584, #E1306C, #F56040);
+        }
+
+        .social-links .linkedin {
+            background: #0077b5;
+        }
+
+        .social-links .twitter {
+            background: #1da1f2;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        /* RESPONSIVE FOOTER */
+        @media (max-width: 768px) {
+            footer {
+                padding: 30px 15px 15px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .footer-section h3 {
+                font-size: 1.1rem;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .social-links a {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            footer {
+                padding: 20px 10px 10px;
+                font-size: 0.8rem;
+            }
+
+            .footer-section h3 {
+                font-size: 1rem;
+            }
+
+            .footer-section.contact p {
+                font-size: 0.85rem;
+            }
+
+            .social-links a {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</body>
+
+</html>

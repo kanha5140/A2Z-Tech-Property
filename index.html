@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-estate company in Odisha</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* BASIC STYLE */
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* --- NEW NAVIGATION CSS --- */
+        /* NAVIGATION BAR */
+        .navbar {
+            background-color: white;
+            /* White background for navigation */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            /* Softer shadow */
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 40px;
+            /* Adjust logo size as needed */
+            margin-right: 10px;
+        }
+
+        .navbar-logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff8c00;
+            /* Orange color for the logo text */
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            margin-left: 25px;
+        }
+
+        .nav-link {
+            color: #333;
+            /* Darker text for white background */
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ff8c00;
+        }
+
+        /* HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            /* Hidden by default on desktop */
+            cursor: pointer;
+            font-size: 1.8rem;
+            /* Slightly larger icon */
+            color: #333;
+            /* Dark color for the icon */
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(rgba(74, 73, 73, 0.299), rgba(59, 59, 59, 0.5)), url('IMG_20251223_190513.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        header img {
+            width: 80px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin: 5px 0;
+            font-weight: 300;
+        }
+
+        /* SOCIAL BUTTONS */
+        .social-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .social-buttons a {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp {
+            background: #25D366;
+        }
+
+        .facebook {
+            background: #3b5998;
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, #C13584, #E1306C, #F56040);
+        }
+
+        .linkedin {
+            background: #0077b5;
+        }
+
+        .twitter {
+            background: #1da1f2;
+        }
+
+        .social-buttons a:hover {
+            transform: scale(1.1);
+        }
+
+        /* HOME FEATURE SECTION */
+        .home-property-feature {
+            padding: 80px 5%;
+            background: #ffffff;
+        }
+
+        .feature-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-image {
+            flex: 1;
+            height: 500px;
+            position: relative;
+        }
+
+        .feature-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .feature-image .badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #ff8c00;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .feature-details {
+            flex: 1;
+            padding: 60px;
+        }
+
+        .top-label {
+            color: #ff8c00;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .feature-details h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #222;
+            line-height: 1.2;
+        }
+
+        .feature-details .location {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .feature-details .description {
+            color: #555;
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+        }
+
+        .feature-specs {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #444;
+            font-weight: 500;
+        }
+
+        .spec-item i {
+            color: #ff8c00;
+            font-size: 1.2rem;
+        }
+
+        .price-action {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .feature-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #222;
+        }
+
+        /* LUXURY GOLD BUTTON STYLE */
+        .luxury-btn {
+            background: linear-gradient(45deg, #af8330, #f2d06b, #af8330);
+            background-size: 200% auto;
+            color: #1a1a1a !important;
+            /* Dark text for contrast against gold */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 28px;
+            border-radius: 4px;
+            /* Slightly sharper corners look more premium than round ones */
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .luxury-btn:hover {
+            background-position: right center;
+            /* Moves the gradient */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(175, 131, 48, 0.4);
+            color: #000 !important;
+        }
+
+        /* The "Shine" Animation */
+        .luxury-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 20%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: rotate(30deg);
+            transition: none;
+        }
+
+        .luxury-btn:hover::after {
+            left: 120%;
+            transition: all 0.6s ease-in-out;
+        }
+
+        /* Adjusting the grid buttons to fit the luxury style if needed */
+        .property-card .buttons .luxury-btn {
+            flex: 1;
+            margin-top: 10px;
+        }
+
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 992px) {
+            .feature-container {
+                flex-direction: column;
+            }
+
+            .feature-image {
+                width: 100%;
+                height: 350px;
+            }
+
+            .feature-details {
+                padding: 40px 25px;
+            }
+
+            .feature-details h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* SECTION-2 */
+        .section-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-box h3 {
+            color: #ff8c00;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        button {
+            background: linear-gradient(45deg, #ff8c00, #ff6b35);
+            border: none;
+            padding: 12px 25px;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 140, 0, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 140, 0, 0.4);
+        }
+
+        /* COLLAB GRID */
+        .collab-section {
+            padding: 40px 20px;
+            background: #f9f9f9;
+            text-align: center;
+        }
+
+        .collab-section h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .collab-section p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        .collab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto 30px;
+        }
+
+        .collab-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .collab-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .collab-card h4 {
+            color: #ff8c00;
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        /* SERVICES GRID */
+        .services-section {
+            padding: 40px 20px;
+            text-align: center;
+            background: white;
+        }
+
+        .services-section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            color: #ff8c00;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        /* SLIDER */
+        .project-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: #f5f5f5;
+        }
+
+        .project-section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .slideshow-container {
+            max-width: 600px;
+            position: relative;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        .slide {
+            display: none;
+        }
+
+        .fade {
+            animation: fadeEffect 1.5s;
+        }
+
+        @keyframes fadeEffect {
+            from {
+                opacity: 0.4;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .dot-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            display: inline-block;
+            background-color: #bbb;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .active {
+            background-color: #ff8c00;
+        }
+
+        /* CONTACT */
+        #contact {
+            padding: 40px 20px;
+            text-align: center;
+            background: white;
+        }
+
+        #contact h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #contact p {
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+
+            /* Mobile Navigation Styles */
+            .hamburger {
+                display: block;
+                /* Show hamburger on mobile */
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                /* Below the nav bar */
+                left: 0;
+                background-color: white;
+                /* White background for mobile menu */
+                border-top: 1px solid #eee;
+                /* Light border */
+                text-align: center;
+                padding: 10px 0;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                /* Shadow for dropdown */
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-item {
+                margin: 10px 0;
+            }
+
+            .nav-link {
+                padding: 10px 0;
+                display: block;
+                color: #333;
+                /* Dark text on white background */
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+
+            .section-2 {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .collab-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slideshow-container {
+                max-width: 100%;
+            }
+
+            iframe {
+                height: 250px;
+            }
+        }
+
+        @media (min-width: 700px) {
+            .section-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="logo.png" alt="BODS INFRA Logo">
+            <a href="index.html">A2ZTechProperty </a>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="owr-Property.html" class="nav-link">Property</a></li>
+            <li class="nav-item"><a href="agent-registration.html" class="nav-link">Agent</a></li>
+            <!----
+            <li class="nav-item"><a href="service.html" class="nav-link">Services</a></li>            
+            <li class="nav-item"><a href="meterials.html" class="nav-link">Meterial</a></li>
+            <li class="nav-item"><a href="technical-vehicals.html" class="nav-link">Technical Vehicles</a></li>
+---->
+            <li class="nav-item"><a href="investors.html" class="nav-link">Investors</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+    <div class="social-buttons">
+        <a href="https://wa.me/+918847806339" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://facebook.com" class="facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://twitter.com" class="twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+    <header>
+        <h1>BODS INFRA TECH SOLUTION</h1>
+        <p>India's First All In One Real-Estate Tech Platform.</p>
+        <p>A Unit Of BODS INFRA TECH PVT LTD.</p>
+    </header>
+    <section>
+        <h2 style="text-align: center; color: #f68a07;">Why We Built This Platform</h2>
+        <div class="video-box">
+            <!-- Replace with your AI generated video -->
+            <iframe src="https://www.youtube.com/embed/PlAvOOgJ7MI?si=9_RGrAkvhSacSO5z" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </section>
+    <section class="home-property-feature">
+        <h2 style="text-align: center;margin-top: 10px; margin-bottom: 40px; color: #fd9401;">Featured Property</h2>
+        <div class="feature-container">
+            <div class="feature-image">
+                <img src="p1.jpeg" alt="Featured Property">
+                <div class="badge">Featured Opportunity</div>
+            </div>
+
+            <div class="feature-details">
+                <span class="top-label">Luxury Living</span>
+                <h2>Premium 3BHK Smart Apartment</h2>
+                <div class="location">
+                    <i class="fas fa-map-marker-alt"></i> Bhubaneswar, Odisha
+                </div>
+                <div class="feature-specs">
+                    <div class="spec-item">
+                        <i class="fas fa-bed"></i>
+                        <span>3 BHK</span>
+                    </div>
+                    <div class="spec-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>24/7 Security</span>
+                    </div>
+                    <div class="spec-item">
+                        <i class="fas fa-parking"></i>
+                        <span>Parking</span>
+                    </div>
+                </div>
+
+                <div class="price-action">
+                    <div class="feature-price">₹75 Lakhs</div>
+                    <a href="owr-Property.html" class="luxury-btn">View All Properties</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="section-2">
+        <div class="service-box">
+            <h3>Register As Partners</h3>
+            <p>Skilled professionals ensuring seamless real estate solutions.</p>
+            <a href="register-as-partners.html"><button>Contact Us</button></a>
+        </div>
+        <div class="service-box">
+            <h3>Our Products & Services</h3>
+            <p>Premium real estate solutions for modern living.</p>
+            <a href="owr-product.html"><button>View Details</button></a>
+        </div>
+    </div>
+
+    <section class="collab-section">
+        <h2>Be a Part of Our Real Estate Ecosystem</h2>
+        <p>Join our real estate community.</p>
+        <div class="collab-grid">
+            <div class="collab-card">
+                <h4>Land Owners</h4>
+            </div>
+            <div class="collab-card">
+                <h4>Engineers</h4>
+            </div>
+            <div class="collab-card">
+                <h4>Developers</h4>
+            </div>
+            <div class="collab-card">
+                <h4>Contractors</h4>
+            </div>
+            <div class="collab-card">
+                <h4>Workers</h4>
+            </div>
+            <div class="collab-card">
+                <h4>Technical Vehicles </h4>
+            </div>
+            <div class="collab-card">
+                <h4>Investors</h4>
+            </div>
+            <div class="collab-card">
+                <h4>Machinery</h4>
+            </div>
+            <div class="collab-card">
+                <h4>Manufacturers</h4>
+            </div>
+            <div class="collab-card">
+                <h4>Vendors</h4>
+            </div>
+        </div>
+        <a href="https://wa.me/918847806339?text=I%20Want%20To%20Register%20As%20partner">
+            <button>Join Now</button>
+        </a>
+    </section>
+
+    <section class="services-section" id="service">
+        <h2>Our Services</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>New Construction</h3>
+                <p>We build properties with quality.</p>
+                <a href="contact.html"><button>Join Now</button></a>
+            </div>
+            <div class="service-card">
+                <h3>Repair & Renovation</h3>
+                <p>Modern renovation services.</p>
+                <a href="contact.html"><button>Join Now</button></a>
+            </div>
+            <div class="service-card">
+                <h3>Demolition</h3>
+                <p>Safe & efficient demolition.</p>
+                <a href="contact.html"><button>Join Now</button></a>
+            </div>
+            <div class="service-card">
+                <h3>Painting</h3>
+                <p>Professional wall painting.</p>
+                <a href="contact.html"><button>Join Now</button></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section" id="projects">
+        <h2>Our Projects</h2>
+        <div class="slideshow-container">
+            <div class="slide fade"><img src="p1.jpeg" alt="Project 1"></div>
+            <div class="slide fade"><img src="p2.jpeg" alt="Project 2"></div>
+            <div class="slide fade"><img src="p3.jpeg" alt="Project 3"></div>
+        </div>
+        <div class="dot-container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </section>
+
+    <script>
+        // Slideshow Script (Existing)
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(showSlides, 3000);
+        }
+
+        function currentSlide(n) {
+            slideIndex = n - 1;
+            showSlides();
+        }
+
+        // --- NEW HAMBURGER MENU SCRIPT ---
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked (for mobile)
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                navMenu.classList.remove('active');
+            }
+        }));
+    </script>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3693.4038860413884!2d84.84742397413797!3d22.22474964563192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a20196024b40181%3A0xbd454f47a0bc95e4!2sBODS%20Infratech%20private%20limited!5e0!3m2!1sen!2sin!4v1763457271822!5m2!1sen!2sin"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <p>📍 A/3, Janaki Market Complex, Rourkela, Odisha</p>
+        <p>📞 8847806339</p>
+        <p>📧 bodsinfratech.care@gmail.com</p>
+        <a href="https://wa.me/+918847806339"><button>Contact Us</button></a>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h3>A2ZTechProperty</h3>
+                <p>Your trusted partner for premium properties in Odisha. Discover apartments, plots, buildings,
+                    and
+                    commercial spaces tailored to your needs.</p>
+                <p>&copy; 2024 A2ZTechProperty. All rights reserved.</p>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="properties.html">Properties</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="agent-registration.html">Agent Registration</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +91 8847806339</p>
+                <p><i class="fas fa-envelope"></i> info@a2ztechproperty.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Bhubaneswar, Odisha, India</p>
+            </div>
+            <div class="footer-section social">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="https://wa.me/+918847806339" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://facebook.com" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" class="instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://twitter.com" class="twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <style>
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, #222 0%, #333 100%);
+            color: white;
+            padding: 40px 20px 20px;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            color: #ff8c00;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff8c00;
+        }
+
+        .footer-section.contact p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-section.contact i {
+            color: #ff8c00;
+            width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-links .whatsapp {
+            background: #25D366;
+        }
+
+        .social-links .facebook {
+            background: #3b5998;
+        }
+
+        .social-links .instagram {
+            background: linear-gradient(45deg, #C13584, #E1306C, #F56040);
+        }
+
+        .social-links .linkedin {
+            background: #0077b5;
+        }
+
+        .social-links .twitter {
+            background: #1da1f2;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        /* RESPONSIVE FOOTER */
+        @media (max-width: 768px) {
+            footer {
+                padding: 30px 15px 15px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .footer-section h3 {
+                font-size: 1.1rem;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .social-links a {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            footer {
+                padding: 20px 10px 10px;
+                font-size: 0.8rem;
+            }
+
+            .footer-section h3 {
+                font-size: 1rem;
+            }
+
+            .footer-section.contact p {
+                font-size: 0.85rem;
+            }
+
+            .social-links a {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner Services Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+
+        .form-container {
+            max-width: 750px;
+            margin: auto;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 15px;
+            display: block;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 11px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            margin-top: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 25px;
+            background: #0072ff;
+            color: white;
+            font-size: 17px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #005bd1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>Partner Services Registration Form</h2>
+
+        <form>
+
+            <!-- Partner Information -->
+            <label>Full Name / Business Owner Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter name" required />
+
+            <label>Business / Company Name</label>
+            <input type="text" id="companyName" name="companyName" placeholder="Enter company name" required />
+
+            <label>Mobile Number</label>
+            <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Enter mobile number" required />
+
+            <label>Alternate Number (Optional)</label>
+            <input type="tel" id="alternateNumber" name="alternateNumber" placeholder="Alternate contact number" />
+
+            <label>Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter email" />
+
+            <label>Business Address / Office Address</label>
+            <input type="text" id="businessAddress" name="businessAddress" placeholder="Street, Area, City" required />
+
+            <!-- Partner Category -->
+            <label>Select Partner Category</label>
+            <select id="partnerCategory" name="partnerCategory" required>
+                <option value="">Select</option>
+                <option>Architecture Partner</option>
+                <option>Vastu Consultant Partner</option>
+                <option>Construction Contractor</option>
+                <option>Renovation & Reconstruction Partner</option>
+                <option>Demolition Contractor</option>
+                <option>Material Supplier / Manufacturer / Dealer</option>
+                <option>Technical Vehicle Provider (JCB, Tractor, Dumper, etc.)</option>
+                <option>Interior Designer Partner</option>
+                <option>Electrician / Plumber Partner</option>
+                <option>Land Developer</option>
+            </select>
+
+            <!-- Experience -->
+            <label>Experience in This Field</label>
+            <select id="experience" name="experience" required>
+                <option value="">Select</option>
+                <option>0 - 1 Year</option>
+                <option>1 - 3 Years</option>
+                <option>3 - 5 Years</option>
+                <option>5+ Years</option>
+            </select>
+
+
+            <label>GST No. (If Available)</label>
+            <input type="text" id="gstNumber" name="gstNumber" placeholder="GST Number" />
+
+            <label>Website / Social Media Link (Optional)</label>
+            <input type="text" id="websiteSocialMedia" name="websiteSocialMedia"
+                placeholder="Website URL or Social Media Page" />
+            <!-- Service Areas -->
+            <label>Service Area / City Coverage</label>
+            <input type="text" id="serviceArea" name="serviceArea" placeholder="City / District / Region" required />
+
+            <!-- Additional Details -->
+            <label>Describe Your Services</label>
+            <textarea rows="3" id="describeServices" name="describeServices"
+                placeholder="Brief description of your services, specialization, work type..." required></textarea>
+
+
+            <label>How Did You Hear About Us?</label>
+            <select id="howHearAboutUs" name="howHearAboutUs">
+                <option>Google</option>
+                <option>WhatsApp</option>
+                <option>Social Media</option>
+                <option>Referral</option>
+                <option>Other</option>
+            </select>
+            <button type="submit">Submit Registration</button>
+        </form>
+    </div>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwutM90CynQ9EhV3Zi9dTKWMwVLD9_C3YN7S-iLSZFcOShxl9KCzNuIfRgB9sUlnms/exec';
+        const form = document.querySelector('form');
+        const submitButton = form.querySelector('button[type="submit"]');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            submitButton.disabled = true;
+            submitButton.innerHTML = "Submitting...";
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    alert("Registration Successful!");
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = "Submit Registration";
+                    form.reset();
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert("Something went wrong. Please try again.");
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = "Submit Registration";
+                });
+        });
+    </script>
+</body>
+
+</html>

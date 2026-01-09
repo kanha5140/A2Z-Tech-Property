@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Registration — A2ZTechProperty</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #f8f9fa;
+            --accent-color: #34a853;
+            --text-color: #202124;
+            --muted-text: #5f6368;
+            --border-color: #dadce0;
+            --error-color: #ea4335;
+            --success-color: #34a853;
+            --shadow: 0 4px 6px rgba(32, 33, 36, 0.1);
+            --border-radius: 8px;
+            --padding: 16px;
+            --transition: all 0.2s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 var(--padding);
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 8px;
+            color: var(--primary-color);
+        }
+
+        .header p {
+            font-size: 16px;
+            color: var(--muted-text);
+            margin: 0;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+
+        label.required::after {
+            content: ' *';
+            color: var(--error-color);
+        }
+
+        input,
+        select,
+        textarea {
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: var(--transition);
+            background: white;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+        }
+
+        input:invalid,
+        select:invalid,
+        textarea:invalid {
+            border-color: var(--error-color);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            margin: 0;
+            width: 16px;
+            height: 16px;
+        }
+
+        .file-upload {
+            position: relative;
+        }
+
+        .file-upload input[type="file"] {
+            opacity: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-upload-label {
+            display: inline-block;
+            padding: 12px 16px;
+            border: 2px dashed var(--border-color);
+            border-radius: var(--border-radius);
+            background: var(--secondary-color);
+            cursor: pointer;
+            text-align: center;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .file-upload-label:hover {
+            border-color: var(--primary-color);
+            background: rgba(26, 115, 232, 0.05);
+        }
+
+        .file-list {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--muted-text);
+        }
+
+        .file-list div {
+            padding: 4px 0;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 32px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1557b0;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--secondary-color);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: #e8eaed;
+        }
+
+        .score-badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .note {
+            font-size: 14px;
+            color: var(--muted-text);
+            margin-top: 16px;
+            text-align: center;
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 14px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                padding: 0 16px;
+            }
+
+            .card {
+                padding: 24px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Loading state */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Success message */
+        .success-message {
+            display: none;
+            background: var(--success-color);
+            color: white;
+            padding: 16px;
+            border-radius: var(--border-radius);
+            margin-top: 16px;
+            text-align: center;
+        }
+
+        /* Basic CSS for the required indicator and errors */
+        .required::after {
+            content: '*';
+            color: red;
+            margin-left: 5px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.85em;
+            margin-top: 5px;
+            display: none;
+            /* Initially hidden */
+        }
+
+        input.invalid,
+        select.invalid,
+        textarea.invalid {
+            border-color: red !important;
+            box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+        }
+
+        .checkbox-group.invalid-group {
+            border: 1px dashed red;
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        .score-badge {
+            font-weight: bold;
+            padding: 8px 15px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            line-height: 1;
+            align-self: center;
+        }
+
+        .success-message {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid green;
+            background-color: #e6ffe6;
+            color: green;
+            border-radius: 5px;
+            display: none;
+            /* Important: Initially hidden */
+        }
+
+        /* Add this to your existing actions div CSS */
+        .actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <h1>Investor Registration</h1>
+                <p>Fill out this form to express your interest in investing in <strong>A2ZTechProperty</strong>.
+                    Complete the key fields for a faster response.</p>
+            </div>
+
+            <form id="investorForm" novalidate>
+                <div class="form-grid">
+                    <!-- Basic Information -->
+                    <div class="form-group">
+                        <label for="fullName" class="required">Full Name</label>
+                        <input id="fullName" name="fullName" type="text" required>
+                        <div class="error-message" id="fullNameError">Full name is required.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobile" class="required">Mobile Number</label>
+                        <input id="mobile" name="mobile" type="tel" required>
+                        <div class="error-message" id="mobileError">Valid mobile number is required.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp Number (if different)</label>
+                        <input id="whatsapp" name="whatsapp" type="tel" placeholder="Optional">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="required">Email</label>
+                        <input id="email" name="email" type="email" required>
+                        <div class="error-message" id="emailError">Valid email is required.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city" class="required">City / State</label>
+                        <input id="city" name="city" type="text" required>
+                        <div class="error-message" id="cityError">City/State is required.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input id="country" name="country" type="text" placeholder="Optional (for NRI)">
+                    </div>
+
+                    <!-- Investor Details -->
+                    <div class="form-group">
+                        <label for="invType" class="required">Investor Type</label>
+                        <select id="invType" name="invType" required>
+                            <option value="">Select Investor Type</option>
+                            <option value="individual">Individual Investor</option>
+                            <option value="angel">Angel Investor</option>
+                            <option value="hni">HNI (High Net Worth Individual)</option>
+                            <option value="microvc">Micro VC</option>
+                            <option value="vc">Venture Capital</option>
+                            <option value="strategic">Strategic / Corporate Investor</option>
+                            <option value="developer">Real Estate Developer</option>
+                            <option value="cofounder">Co-founder / Partner Interest</option>
+                        </select>
+                        <div class="error-message" id="invTypeError">Investor type is required.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="capacity" class="required">Investment Capacity</label>
+                        <select id="capacity" name="capacity" required>
+                            <option value="">Select Range</option>
+                            <option value="1">₹5–10 Lakhs</option>
+                            <option value="2">₹10–25 Lakhs</option>
+                            <option value="3">₹25–50 Lakhs</option>
+                            <option value="4">₹50 Lakhs – ₹1 Crore</option>
+                            <option value="5">₹1–3 Crore</option>
+                            <option value="6">₹3 Crore+</option>
+                        </select>
+                        <div class="error-message" id="capacityError">Investment capacity is required.</div>
+                    </div>
+
+                    <!-- Investment Purpose -->
+                    <div class="form-group full-width">
+                        <label class="required">Investment Purpose (choose all that apply)</label>
+                        <div class="checkbox-group" id="purposeGroup">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="purpose" value="equity"> Equity Investment
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="purpose" value="partnership"> Partnership / Co-founder
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="purpose" value="techstartup"> For Real Estate Tech Startup
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="purpose" value="platformexpansion"> Platform Expansion
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="purpose" value="propertyprojects"> Real Estate Property
+                                Projects
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="purpose" value="shortterm"> Short-term Returns
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="purpose" value="longterm"> Long-term Growth
+                            </label>
+                        </div>
+                        <div class="error-message" id="purposeError">At least one purpose must be selected.</div>
+                    </div>
+
+                    <!-- Timeline and Background -->
+                    <div class="form-group">
+                        <label for="timeline" class="required">Investment Timeline</label>
+                        <select id="timeline" name="timeline" required>
+                            <option value="">Select Timeline</option>
+                            <option value="3">Immediately (0–30 days)</option>
+                            <option value="2">Within 3 months</option>
+                            <option value="1">Within 6 months</option>
+                            <option value="0">Not immediate / Planning</option>
+                        </select>
+                        <div class="error-message" id="timelineError">Timeline is required.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="background" class="required">Professional Background</label>
+                        <select id="background" name="background" required>
+                            <option value="">Select Background</option>
+                            <option value="3">Business Owner</option>
+                            <option value="2">Corporate Professional</option>
+                            <option value="3">Builder / Developer</option>
+                            <option value="2">Startup Founder</option>
+                            <option value="2">NRI Investor</option>
+                            <option value="1">Real Estate Broker</option>
+                            <option value="0">Other</option>
+                        </select>
+                        <div class="error-message" id="backgroundError">Background is required.</div>
+                    </div>
+
+                    <!-- Business Details -->
+                    <div class="form-group full-width">
+                        <label for="company">Company Name / Work Profile</label>
+                        <input id="company" name="company" type="text"
+                            placeholder="Optional: Company name or brief profile">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience">Years of Experience</label>
+                        <select id="experience" name="experience">
+                            <option value="">Select</option>
+                            <option value="0">Less than 1</option>
+                            <option value="1">1 - 3</option>
+                            <option value="2">3 - 5</option>
+                            <option value="3">5 - 10</option>
+                            <option value="4">10+</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Value Addition (select all that apply)</label>
+                        <div class="checkbox-group" id="valueAddGroup">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="valueAdd" value="tech"> Technology Support
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="valueAdd" value="marketing"> Marketing & Branding
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="valueAdd" value="sales"> Sales Network
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="valueAdd" value="vendor"> Vendor / Builder Network
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="valueAdd" value="legal"> Legal & Compliance
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="valueAdd" value="team"> Team Building / HR
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Meeting Preferences -->
+                    <div class="form-group">
+                        <label for="meeting">Meeting Preference</label>
+                        <select id="meeting" name="meeting">
+                            <option value="online">Online Meeting</option>
+                            <option value="offline">Offline Meeting</option>
+                            <option value="both">Both</option>
+                            <option value="later">Will decide later</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meetDate">Preferred Date / Time</label>
+                        <input id="meetDate" name="meetDate" type="text" placeholder="e.g., 25 Dec 2025, Afternoon">
+                    </div>
+
+
+                    <!-- Additional Questions -->
+                    <div class="form-group full-width">
+                        <label for="why">Why are you interested in A2ZTechProperty?</label>
+                        <textarea id="why" name="why" placeholder="One short paragraph"></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="expect">Any expectations from the company?</label>
+                        <textarea id="expect" name="expect"
+                            placeholder="E.g., monthly reports, seat on advisory board, etc."></textarea>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button type="button" class="btn btn-secondary" id="clearBtn">Clear Form</button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Submit Investor Inquiry</button>
+                    <div id="scoreBox" class="score-badge" title="Auto-calculated investor score">Score: —</div>
+                </div>
+
+                <div id="successMessage" class="success-message">
+                    Thank you! Your inquiry has been submitted successfully. We will contact you soon.
+                </div>
+
+                <p class="note">By submitting, you agree to be contacted by A2ZTechProperty regarding your investment
+                    interest.</p>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('investorForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const scoreBox = document.getElementById('scoreBox');
+            const successMessage = document.getElementById('successMessage');
+
+            // 🔥🔥🔥 REPLACE THIS WITH YOUR DEPLOYED GOOGLE APPS SCRIPT URL 🔥🔥🔥
+            const SCRIPT_URL = ' https://script.google.com/macros/s/AKfycbyBtl4lr5OC9lPNey2At7E41qgt42wdufL1GTB2XZABH3LiYDvybI7HSTqM3pj4Zi14/exec';
+
+            // --- Scoring Logic (Client-Side) ---
+            const calculateScore = () => {
+                let score = 0;
+
+                // 1. Investor Type: Highly desirable types get a higher score
+                const invTypeMap = {
+                    'angel': 5, 'hni': 6, 'microvc': 8, 'vc': 10, 'strategic': 7,
+                    'developer': 5, 'cofounder': 8
+                };
+                const invType = document.getElementById('invType').value;
+                score += invTypeMap[invType] || 2; // Default for 'individual'
+
+                // 2. Investment Capacity: Higher capacity = higher score
+                // capacity values are '1' through '6'
+                const capacityMap = { '1': 2, '2': 4, '3': 6, '4': 8, '5': 10, '6': 12 };
+                const capacity = document.getElementById('capacity').value;
+                score += capacityMap[capacity] || 0;
+
+                // 3. Investment Purpose: Partnership and Long-term growth are valuable
+                const purposeCheckboxes = document.querySelectorAll('input[name="purpose"]:checked');
+                purposeCheckboxes.forEach(cb => {
+                    if (cb.value === 'partnership' || cb.value === 'longterm') {
+                        score += 2;
+                    } else if (cb.value === 'equity' || cb.value === 'techstartup') {
+                        score += 1;
+                    }
+                });
+
+                // 4. Investment Timeline: Immediate interest gets a bonus
+                // timeline values are '0' through '3' (3=Immediately)
+                const timelineMap = { '3': 5, '2': 3, '1': 1 };
+                const timeline = document.getElementById('timeline').value;
+                score += timelineMap[timeline] || 0;
+
+                // 5. Professional Background: Relevant backgrounds get a bonus
+                const backgroundMap = { 'Business Owner': 2, 'Corporate Professional': 1, 'Builder / Developer': 3, 'Startup Founder': 2 };
+                const background = document.getElementById('background').value;
+                score += backgroundMap[background] || 0;
+
+                // 6. Value Addition: Active contributors get a bonus
+                const valueAddCheckboxes = document.querySelectorAll('input[name="valueAdd"]:checked');
+                score += valueAddCheckboxes.length * 1.5; // 1.5 points per value-add option
+
+                // Clamp the score (optional, for display neatness)
+                const finalScore = Math.min(Math.round(score), 50); // Max score 50 (arbitrary max)
+
+                scoreBox.textContent = `Score: ${finalScore}`;
+                return finalScore;
+            };
+
+            // --- Validation and Error Handling ---
+            const validateField = (input) => {
+                let isValid = true;
+                const errorElement = document.getElementById(`${input.id}Error`);
+
+                if (input.hasAttribute('required') && !input.value.trim()) {
+                    isValid = false;
+                } else if (input.type === 'email' && input.value.trim() && !/\S+@\S+\.\S+/.test(input.value)) {
+                    isValid = false;
+                } else if (input.type === 'tel' && input.value.trim() && !/^\+?[0-9\s-]{7,}$/.test(input.value)) {
+                    // Basic check for phone number (at least 7 digits, allows +, space, -)
+                    isValid = false;
+                }
+
+                input.classList.toggle('invalid', !isValid);
+                if (errorElement) errorElement.style.display = isValid ? 'none' : 'block';
+                return isValid;
+            };
+
+            const validateCheckboxes = (name) => {
+                const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+                const isValid = checkboxes.length > 0;
+                const errorElement = document.getElementById(`${name}Error`);
+
+                const groupElement = document.getElementById(`${name}Group`);
+                if (groupElement) groupElement.classList.toggle('invalid-group', !isValid);
+
+                if (errorElement) errorElement.style.display = isValid ? 'none' : 'block';
+                return isValid;
+            };
+
+            const validateForm = () => {
+                let isFormValid = true;
+
+                // Validate all required single fields
+                const requiredInputs = form.querySelectorAll('input[required], select[required]');
+                requiredInputs.forEach(input => {
+                    if (!validateField(input)) isFormValid = false;
+                });
+
+                // Validate required checkbox groups
+                if (!validateCheckboxes('purpose')) isFormValid = false;
+
+                return isFormValid;
+            };
+
+            // --- Event Listeners ---
+
+            // Validate on blur for user experience
+            form.querySelectorAll('input, select').forEach(input => {
+                input.addEventListener('blur', () => {
+                    // Only validate required fields on blur
+                    if (input.hasAttribute('required')) {
+                        validateField(input);
+                        calculateScore(); // Recalculate score after every change
+                    }
+                });
+                input.addEventListener('change', () => {
+                    // Validate selects/checkboxes on change
+                    if (input.tagName === 'SELECT' || input.type === 'checkbox') {
+                        validateField(input);
+                        calculateScore(); // Recalculate score after every change
+                    }
+                });
+            });
+
+            // Initial score calculation
+            calculateScore();
+
+            // Clear form button
+            clearBtn.addEventListener('click', () => {
+                form.reset();
+                document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.invalid, .invalid-group').forEach(el => el.classList.remove('invalid', 'invalid-group'));
+                successMessage.style.display = 'none';
+                calculateScore();
+            });
+
+            // Form Submission Handler
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault(); // Stop default form submission
+
+                if (!validateForm()) {
+                    alert("Please fill out all required fields correctly before submitting.");
+                    return;
+                }
+
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+
+                const formData = new FormData(form);
+                const urlParams = new URLSearchParams();
+
+                // Add all form fields to the URLSearchParams object
+                for (const [name, value] of formData.entries()) {
+                    urlParams.append(name, value);
+                }
+
+                // Add the calculated investor score
+                const finalScore = calculateScore();
+                urlParams.append('investorScore', finalScore);
+
+                // Send data to Google Apps Script using fetch POST
+                try {
+                    const response = await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors', // Required for Google Apps Script endpoint
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: urlParams.toString()
+                    });
+
+                    // Note: The response is often opaque with 'no-cors', but the script
+                    // should have successfully written the data if the fetch was successful.
+
+                    // Show success message and reset form
+                    form.reset();
+                    document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+                    document.querySelectorAll('.invalid, .invalid-group').forEach(el => el.classList.remove('invalid', 'invalid-group'));
+
+                    successMessage.style.display = 'block';
+                    setTimeout(() => { successMessage.style.display = 'none'; }, 5000);
+
+                    calculateScore(); // Reset score display
+
+                } catch (error) {
+                    console.error('Submission Error:', error);
+                    alert('There was an error submitting your inquiry. Please try again.');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Investor Inquiry';
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

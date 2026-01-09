@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Residential Property – Buyer Form</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 25px;
+        }
+
+        .container {
+            max-width: 820px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #0a6b3c;
+            color: white;
+            border: none;
+            margin-top: 25px;
+            border-radius: 8px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover:not(:disabled) {
+            background: #074f2b;
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!----Resident Property Requirment from-->
+        <h2>Residential Property Buyer Form</h2>
+        <form id="residentialBuyer">
+            <label>Customer Name</label> <input type="text" id="name" name="name" required />
+
+
+            <label>Mobile Number</label> <input type="tel" id="Number" name="Number" required />
+
+            <label for="proType">Property Type</label>
+
+            <select id="proType" name="proType" required onchange="showOtherProType()">
+                <option value="">Select</option>
+                <option>House</option>
+                <option>Flat</option>
+                <option>Apartment</option>
+                <option>Apartment Building</option>
+                <option>Independent Duplex</option>
+                <option>Villa</option>
+                <option>Plot for House</option>
+                <option value="other">Other (Specify)</option>
+            </select>
+
+            <input type="text" id="proTypeOther" name="proTypeOther" placeholder="Please specify"
+                style="display:none; margin-top:8px;">
+
+            <script>
+                function showOtherProType() {
+                    const select = document.getElementById("proType");
+                    const input = document.getElementById("proTypeOther");
+
+                    if (select.value === "other") {
+                        input.style.display = "block";
+                        input.required = true;
+                    } else {
+                        input.style.display = "none";
+                        input.required = false;
+                        input.value = "";
+                    }
+                }
+            </script>
+
+
+            <label>Preferred Location</label> <input type="text" id="location" name="location"
+                placeholder="Area / Landmark / City" required />
+
+            <label>Budget Range (₹)</label> <input type="text" id="budRang" name="budRang"
+                placeholder="Example: ₹15 Lakh – ₹40 Lakh" />
+
+            <label>Area Requirement (Sqft)</label> <input type="number" id="areaRequirment" name="areaRequirment"
+                placeholder="Example: 1200 sqft" />
+
+            <label>BHK Requirement</label> <select id="bhk" name="bhk" required>
+                <option>1 BHK</option>
+                <option>2 BHK</option>
+                <option>3 BHK</option>
+                <option>4+ BHK</option>
+            </select>
+
+            <label for="purpose">Purpose of Buying</label>
+
+            <select id="purpose" name="purpose" required onchange="showPurposeOther()">
+                <option value="">Select</option>
+                <option>Self Use</option>
+                <option>Investment</option>
+                <option>Rental Income</option>
+                <option value="other">Other (Specify)</option>
+            </select>
+
+            <input type="text" id="purposeOther" name="purposeOther" placeholder="Please specify"
+                style="display:none; margin-top:8px;">
+
+            <script>
+                function showPurposeOther() {
+                    const select = document.getElementById("purpose");
+                    const input = document.getElementById("purposeOther");
+
+                    if (select.value === "other") {
+                        input.style.display = "block";
+                        input.required = true;
+                    } else {
+                        input.style.display = "none";
+                        input.required = false;
+                        input.value = "";
+                    }
+                }
+            </script>
+
+
+            <!-- Legal & Documentation Section -->
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-file-contract mr-2 text-orange-600"></i> Legal & Documentation
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="input-icon">
+                        <i class="fas fa-file-alt"></i>
+                        <select name="khataType" id="khataType"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required onchange="showKhataOther()">
+
+                            <option value="">Khata Type</option>
+                            <option value="Sabik">Sabik</option>
+                            <option value="Hal">Hal</option>
+                            <option value="Kisam">Kisam</option>
+                            <option value="other">Other (Specify)</option>
+                        </select>
+
+                        <input type="text" id="khataOther" name="khataOther" placeholder="Please specify Khata Type"
+                            class="w-full border border-gray-300 p-3 rounded-lg mt-2" style="display:none;">
+
+                        <script>
+                            function showKhataOther() {
+                                const select = document.getElementById("khataType");
+                                const input = document.getElementById("khataOther");
+
+                                if (select.value === "other") {
+                                    input.style.display = "block";
+                                    input.required = true;
+                                } else {
+                                    input.style.display = "none";
+                                    input.required = false;
+                                    input.value = "";
+                                }
+                            }
+                        </script>
+                    </div>
+                    <div class="input-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                        <input type="text" id="Khatanumber" name="Khatanumber"
+                            placeholder="Khata Number(e.g., 1200, 3400)"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required />
+                    </div>
+
+                    <div class="input-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                        <input type="text" id="plotNumber" name="plotNumber" placeholder="Plot Number (e.g., B1, C2 )"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required />
+                    </div>
+
+
+                    <div class="input-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                        <select id="Religious" name="Religious"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required>
+                            <option value="">Religious Restriction?</option>
+                            <option value="Hindu">Hindu</option>
+                            <option value="Muslim">Muslim</option>
+                            <option value="Sikh">Sikh</option>
+                            <option value="Christian">Christian</option>
+                            <option value="Buddh">Buddh</option>
+                            <option value="Jain">Jain</option>
+                        </select>
+                    </div>
+
+
+                    <div class="input-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                        <select id="Cast" name="Cast"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required>
+                            <option value="">Caste Restriction?</option>
+                            <option value="General">General</option>
+                            <option value="OBC (Other Backward Classes)">OBC (Other Backward Classes)</option>
+                            <option value="SC (Scheduled Cast)">SC (Scheduled Cast)</option>
+                            <option value="ST(Scheduled Type)">ST (Scheduled Type)</option>
+
+                        </select>
+                    </div>
+
+                    <div class="input-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                        <select id="mutation" name="mutation"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required>
+                            <option value="">Mutation Done?</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="input-icon">
+                        <i class="fas fa-border-all"></i>
+                        <select id="boundary" name="boundary"
+                            class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required>
+                            <option value="">Boundary Wall?</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <label>Preferred Amenities</label>
+
+            <textarea rows="3" id="preferedAmen" name="preferedAmen"
+                placeholder="Parking, borewell, road size, nearby school/market, etc."></textarea>
+            <label>Additional Requirements</label>
+
+            <textarea rows="4" id="addRequirment" name="addRequirment"
+                placeholder="Facing, Vaastu preference, new/old construction, etc."></textarea>
+
+            <button type="submit" id="submitBtn"
+                class="w-full bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-700">
+                Submit
+            </button>
+            <p id="successMsg" style="color: green; font-weight: bold; margin-top: 15px;"></p>
+
+        </form>
+    </div>
+    <script>
+        // Handle form submission via AJAX
+        document.getElementById('residentialBuyer').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent default form submission
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<div class="spinner"></div>Submitting... Please wait';
+
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => data[key] = value);
+
+            fetch('https://script.google.com/macros/s/AKfycbwGoUqk3yzXReWJzb68qhtlcFobt8LcIA3VTKzpF2GKksATFxi7JFjmhnTmvXwpG3Qo/exec', { // Replace with your Google Apps Script web app URL
+                method: 'POST',
+                body: new URLSearchParams(data),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.success) {
+                        document.getElementById('successMsg').textContent = result.message;
+                        this.reset(); // Reset the form
+                    } else {
+                        alert('Error: ' + result.message);
+                    }
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Submit';
+                })
+                .catch(error => {
+                    alert('Submission failed: ' + error.message);
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Submit';
+                });
+        });
+    </script>
+</body>
+
+</html>

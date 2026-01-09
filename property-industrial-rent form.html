@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Property Rent Forms</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 25px;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 10px;
+            background-color: #ddd;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .tab-button.active {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .container {
+            max-width: 820px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #0a6b3c;
+            color: white;
+            border: none;
+            margin-top: 25px;
+            border-radius: 8px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #074f2b;
+        }
+
+        .renter-button {
+            background: #0072ff;
+        }
+
+        .renter-button:hover {
+            background: #0059cc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tabs">
+        <button class="tab-button active" onclick="showTab(0)">Renter Form</button>
+        <button class="tab-button" onclick="showTab(1)">Owner Form</button>
+    </div>
+
+    <div class="tab-content active">
+        <div class="container">
+            <h2>Industrial Property – Renter Form</h2>
+
+            <form>
+
+                <label>Full Name *</label>
+                <input type="text" id="name" name="Name" placeholder="Enter your name" required>
+
+                <label>Company / Business Name (Optional)</label>
+                <input type="text" id="businessname" name="businessname" placeholder="Company name">
+
+                <label>Mobile Number *</label>
+                <input type="tel" id="number" name="number" placeholder="Enter mobile number" required>
+
+                <label>Alternate Mobile (Optional)</label>
+                <input type="tel" id="alternateNumber" name="alternateNumber" placeholder="Alternate mobile">
+
+                <label>Email (Optional)</label>
+                <input type="email" id="email" name="email" placeholder="Email address">
+                <label for="industrialPropertyType">Required Industrial Property Type <span
+                        aria-hidden="true">*</span></label>
+
+                <select id="industrialPropertyType" name="industrialPropertyType" required onchange="showOtherInput()">
+                    <option value="">Select</option>
+                    <option>Industrial Land</option>
+                    <option>Industrial Shed</option>
+                    <option>Factory Building</option>
+                    <option>Warehouse / Godown</option>
+                    <option>Cold Storage</option>
+                    <option>Logistics Space</option>
+                    <option value="other">Other (Specify)</option>
+                </select>
+
+                <!-- Hidden input for user typing -->
+                <input type="text" id="otherIndustrialType" name="otherIndustrialType" placeholder="Please specify"
+                    style="display:none; margin-top:8px;">
+
+                <script>
+                    function showOtherInput() {
+                        var select = document.getElementById("industrialPropertyType");
+                        var otherInput = document.getElementById("otherIndustrialType");
+
+                        if (select.value === "other") {
+                            otherInput.style.display = "block";
+                            otherInput.required = true;
+                        } else {
+                            otherInput.style.display = "none";
+                            otherInput.required = false;
+                            otherInput.value = "";
+                        }
+                    }
+                </script>
+
+
+                <label>Preferred Location *</label>
+                <input type="text" id="location" name="location" placeholder="City / Area / Landmark" required>
+
+                <label>Required Total Area *</label>
+                <input type="text" id="totalArea" name="totalArea" placeholder="Example: 5000 sqft / 1 acre" required>
+
+                <label>Required Built-Up / Shed Area (If Any)</label>
+                <input type="text" id="builtUpArea" name="builtUpArea" placeholder="Example: 3000 sqft">
+
+                <label>Budget Range Per Month *</label>
+                <input type="text" id="budgetRange" name="budgetRange" placeholder="₹ Example: 25,000 - 60,000" required>
+                <label>Power Requirement</label>
+                <select id="powerRequirement" name="powerRequirement">
+                    <option>No Specific Requirement</option>
+                    <option>Single Phase</option>
+                    <option>3 Phase</option>
+                    <option>High Load Industrial</option>
+                </select>
+
+                <label>Height Requirement (If Shed)</label>
+                <input type="text" id="HeightRequired" name="HeightRequired" placeholder="Example: Min 22 ft">
+
+                <label>Road Access Requirement *</label>
+                <select id="Roadaccess" name="Roadaccess" required>
+                    <option>Normal Road</option>
+                    <option>Truck Accessible Road</option>
+                    <option>Highway Touch</option>
+                    <option>Industrial Corridor</option>
+                </select>
+
+                <label>Parking & Open Space Requirement *</label>
+                <select id="parkingSpaceRequirement" name="parkingSpaceRequirement" required>
+                    <option>Not Required</option>
+                    <option>Small Space</option>
+                    <option>Medium Parking</option>
+                    <option>Large Open Yard</option>
+                </select>
+
+                <label>Purpose of Renting *</label>
+                <select id="Purpose" name="Purpose" required>
+                    <option value="">Select</option>
+                    <option>Manufacturing Unit</option>
+                    <option>Warehouse Storage</option>
+                    <option>Logistics Operation</option>
+                    <option>Industrial Processing</option>
+                    <option>Packaging Unit</option>
+                    <option>Other</option>
+                </select>
+
+                <label>Documents Required?</label>
+                <select id="documentsRequired" name="documentsRequired">
+                    <option>Not Required</option>
+                    <option>GST Certificate</option>
+                    <option>Company Registration</option>
+                    <option>Owner KYC</option>
+                </select>
+
+                <label>Expected Move-in Date</label>
+                <input type="date" id="moveinDate" name="moveinDate">
+
+                <label>Additional Requirements (Optional)</label>
+                <textarea rows="3" id="Additional" name="Additional" placeholder="Any special requirement..."></textarea>
+
+                <label>How Did You Hear About Us?</label>
+                <select id="Heard" name="Heard">
+                    <option>Google</option>
+                    <option>Website</option>
+                    <option>WhatsApp</option>
+                    <option>Social Media</option>
+                    <option>Reference</option>
+                    <option>Other</option>
+                </select>
+
+                <button type="submit">Submit</button>
+
+            </form>
+
+
+
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <div class="container">
+            <h2>Industrial Property – Rent Owner Form</h2>
+
+            <form>
+
+                <label>Full Name *</label>
+                <input type="text" placeholder="Enter owner name" required />
+
+                <label>Mobile Number *</label>
+                <input type="tel" placeholder="Enter mobile number" required />
+
+                <label>Alternate Mobile (Optional)</label>
+                <input type="tel" placeholder="Alternate contact number" />
+
+                <label>Email (Optional)</label>
+                <input type="email" placeholder="Enter email" />
+
+                <label>Property Category *</label>
+                <select required>
+                    <option value="">Select</option>
+                    <option>Industrial Land</option>
+                    <option>Industrial Shed</option>
+                    <option>Factory Building</option>
+                    <option>Warehouse / Godown</option>
+                    <option>Cold Storage</option>
+                    <option>Logistics Park Unit</option>
+                </select>
+
+                <label>Exact Property Location *</label>
+                <input type="text" placeholder="Area, City, Landmark" required />
+
+                <label>Total Area *</label>
+                <input type="text" placeholder="Example: 10,000 sqft / 1 acre" required />
+
+                <label>Built-up / Shed Size</label>
+                <input type="text" placeholder="Example: 5,000 sqft (optional)" />
+
+                <label>Rental Price Expectation *</label>
+                <input type="text" placeholder="₹ per month" required />
+
+                <label>Electric Connection</label>
+                <select>
+                    <option>Not Available</option>
+                    <option>Single Phase</option>
+                    <option>3 Phase</option>
+                    <option>High Load Industrial</option>
+                </select>
+
+                <label>Height of Shed / Building</label>
+                <input type="text" placeholder="e.g. 22 ft, 30 ft" />
+
+                <label>Road Access</label>
+                <select>
+                    <option>Normal Road</option>
+                    <option>Wide Road (Truck Accessible)</option>
+                    <option>Highway Touch</option>
+                    <option>Industrial Corridor</option>
+                </select>
+
+                <label>Parking & Open Space</label>
+                <select>
+                    <option>No Space</option>
+                    <option>Small Space</option>
+                    <option>Medium Space</option>
+                    <option>Large Open Yard</option>
+                </select>
+
+                <label>Property Documents Available *</label>
+                <select required>
+                    <option value="">Select</option>
+                    <option>Clear Title</option>
+                    <option>Lease Hold</option>
+                    <option>Company Property</option>
+                    <option>Industrial Estate Approval</option>
+                    <option>Other</option>
+                </select>
+
+                <label>Upload Property Images (Optional)</label>
+                <input type="file" accept="image/*" multiple />
+
+                <label>Additional Details (Optional)</label>
+                <textarea rows="3" placeholder="Any special features or conditions..."></textarea>
+
+                <label>How Did You Hear About Us?</label>
+                <select>
+                    <option>Google / Website</option>
+                    <option>WhatsApp</option>
+                    <option>Reference</option>
+                    <option>Social Media</option>
+                    <option>Other</option>
+                </select>
+
+                <button type="submit">Submit</button>
+
+            </form>
+
+
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabIndex) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-button');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            buttons.forEach(button => button.classList.remove('active'));
+            tabs[tabIndex].classList.add('active');
+            buttons[tabIndex].classList.add('active');
+        }
+    </script>
+</body>
+
+</html>

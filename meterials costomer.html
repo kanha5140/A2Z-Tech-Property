@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Materials Order Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+
+        .form-container {
+            max-width: 780px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 15px;
+            display: block;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 11px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            margin-top: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #0072ff;
+            color: white;
+            font-size: 17px;
+            border: none;
+            border-radius: 8px;
+            margin-top: 25px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #005bd1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>Customer Materials Order Form</h2>
+        <form id="orderForm" method="POST"
+            action="https://script.google.com/macros/s/AKfycbyP9Jq5kF7odsEhIGOwZXAGUl3RGCWzFuEzfh_lVNaU2WzrLCd18n3NaPKmInrd_xM/exec">
+            <!-- Replace YOUR_WEB_APP_URL with the URL from step 3 -->
+
+            <!-- Personal Info -->
+            <label>Full Name</label>
+            <input type="text" name="FullName" placeholder="Enter full name" required>
+
+            <label>Mobile Number</label>
+            <input type="tel" name="MobileNumber" placeholder="Enter mobile number" required>
+
+            <label>Alternate Mobile (Optional)</label>
+            <input type="tel" name="AltMobile" placeholder="Alternate number">
+
+            <!-- Location -->
+            <label>Delivery Location</label>
+            <input type="text" name="DeliveryLocation" placeholder="Area / City" required>
+
+            <!-- Main Category -->
+            <label>Select Material Category</label>
+            <select id="materialCategory" name="MaterialCategory" required onchange="showOtherInput()">
+                <option value="">Select Category</option>
+                <option>Construction Materials</option>
+                <option>Electrical Materials</option>
+                <option>Plumbing Materials</option>
+                <option>Tiles & Flooring</option>
+                <option>Paints & Waterproofing</option>
+                <option>Doors & Windows</option>
+                <option>Interior & Finishing</option>
+                <option>Industrial & Heavy Materials</option>
+                <option value="other">Other (Write Manually)</option>
+            </select>
+
+            <script>
+                function showOtherInput() {
+                    const selectBox = document.getElementById("materialCategory");
+                    const otherInput = document.getElementById("otherCategoryInput");
+
+                    if (selectBox.value === "other") {
+                        otherInput.style.display = "block";
+                        otherInput.required = true;
+                    } else {
+                        otherInput.style.display = "none";
+                        otherInput.required = false;
+                        otherInput.value = "";
+                    }
+                }
+            </script>
+
+            <!-- Hidden Input Box -->
+            <input type="text" id="otherCategoryInput" name="OtherMaterialCategory" placeholder="Enter your category"
+                style="display:none; margin-top:10px;">
+
+            <label>Select Material Type</label>
+            <select id="materialType" name="MaterialType" required onchange="showOtherMaterialType()">
+                <option value="">Select Material Type</option>
+
+                <!-- Construction -->
+                <option>Cement</option>
+                <option>Steel (TMT Bars)</option>
+                <option>Sand / M-Sand</option>
+                <option>Bricks (Fly Ash / Wire Cut)</option>
+                <option>Stone Chips (20mm,12mm)</option>
+                <option>RMC Concrete</option>
+                <option>AAC Blocks</option>
+
+                <!-- Electrical -->
+                <option>Wires</option>
+                <option>Switch Boards</option>
+                <option>LED Lights</option>
+                <option>MCB / DB</option>
+
+                <!-- Plumbing -->
+                <option>PVC Pipes</option>
+                <option>CPVC Pipes</option>
+                <option>Sanitary Fittings</option>
+                <option>Valves</option>
+
+                <!-- Tiles -->
+                <option>Floor Tiles</option>
+                <option>Wall Tiles</option>
+                <option>Granite</option>
+                <option>Marble</option>
+
+                <!-- Paints -->
+                <option>Primer / Putty</option>
+                <option>Interior Paint</option>
+                <option>Exterior Paint</option>
+                <option>Waterproofing Solutions</option>
+
+                <!-- Doors -->
+                <option>Wooden Doors</option>
+                <option>UPVC Windows</option>
+                <option>Aluminium Windows</option>
+
+                <!-- Interior -->
+                <option>False Ceiling</option>
+                <option>Modular Kitchen</option>
+                <option>Hardware Fittings</option>
+
+                <!-- Industrial -->
+                <option>Shuttering Plywood</option>
+                <option>Binding Wire</option>
+                <option>Industrial Cement</option>
+
+                <!-- Manual -->
+                <option value="other">Other (Write Manually)</option>
+            </select>
+
+            <!-- Hidden Input -->
+            <input type="text" id="otherMaterialTypeInput" name="otherMaterialTypeInput"
+                placeholder="Enter material type" style="display:none; margin-top:10px;">
+
+            <script>
+                function showOtherMaterialType() {
+                    const selectBox = document.getElementById("materialType");
+                    const otherInput = document.getElementById("otherMaterialTypeInput");
+
+                    if (selectBox.value === "other") {
+                        otherInput.style.display = "block";
+                        otherInput.required = true;
+                    } else {
+                        otherInput.style.display = "none";
+                        otherInput.required = false;
+                        otherInput.value = "";
+                    }
+                }
+            </script>
+
+            <label>Preferred Brand (Optional)</label>
+            <select id="brandSelect" name="brandSelect" onchange="showOtherBrandInput()">
+                <option value="">No Preference</option>
+                <option>UltraTech</option>
+                <option>ACC Cement</option>
+                <option>JSW Cement</option>
+                <option>Dalmia</option>
+                <option>JK Lakshmi</option>
+                <option>Asian Paints</option>
+                <option>Berger</option>
+                <option>Havells</option>
+                <option>Finolex</option>
+
+                <!-- Manual Entry -->
+                <option value="other">Other (Write Manually)</option>
+            </select>
+
+            <!-- Hidden Input -->
+            <input type="text" id="otherBrandInput" name="otherBrandInput" placeholder="Enter brand name"
+                style="display:none; margin-top:10px;">
+            <script>
+                function showOtherBrandInput() {
+                    const brandSelect = document.getElementById("brandSelect");
+                    const otherInput = document.getElementById("otherBrandInput");
+
+                    if (brandSelect.value === "other") {
+                        otherInput.style.display = "block";
+                        otherInput.required = true;
+                    } else {
+                        otherInput.style.display = "none";
+                        otherInput.required = false;
+                        otherInput.value = "";
+                    }
+                }
+            </script>
+
+            <!-- Quantity -->
+            <label>Required Quantity</label>
+            <input type="text" id="requiredQuality" name="requiredQuality"
+                placeholder="Example: 20 bags, 500 bricks, 2 tons, 200 sqft" required>
+
+            <!-- Delivery -->
+            <label>Delivery Required On</label>
+            <input type="date" id="DeliveryDate" name="DeliveryDate" required>
+
+            <!-- Additional Details -->
+            <label>Additional Requirements (Optional)</label>
+            <textarea rows="3" id="Additionalrequirment" placeholder="Any specific requirement..."></textarea>
+
+            <!-- Referral -->
+            <label>How Did You Hear About Us?</label>
+            <select id="referralSource" name="referralSource" required>
+                <option>Google</option>
+                <option>WhatsApp</option>
+                <option>Facebook / Instagram</option>
+                <option>Referral</option>
+                <option>Other</option>
+            </select>
+
+            <button type="submit">Submit Order</button>
+            <!-- Loader -->
+            <div id="loading" style="display:none; margin-top:15px; color:blue;">
+                ⏳ Submitting... Please wait
+            </div>
+
+            <!-- Success Message -->
+            <div id="successMsg" style="display:none; margin-top:15px; color:green;">
+                ✅ Successfully submitted!
+            </div>
+
+        </form>
+    </div>
+    <script>
+        document.getElementById("orderForm").addEventListener("submit", function (e) {
+            e.preventDefault(); // stop page reload
+
+            const form = this;
+            const loading = document.getElementById("loading");
+            const successMsg = document.getElementById("successMsg");
+
+            loading.style.display = "block";
+            successMsg.style.display = "none";
+
+            const formData = new FormData(form);
+
+            fetch("https://script.google.com/macros/s/AKfycbyP9Jq5kF7odsEhIGOwZXAGUl3RGCWzFuEzfh_lVNaU2WzrLCd18n3NaPKmInrd_xM/exec", {
+                method: "POST",
+                body: formData
+            })
+                .then(response => response.text())
+                .then(result => {
+                    loading.style.display = "none";
+                    successMsg.style.display = "block";
+                    form.reset();
+                })
+                .catch(error => {
+                    loading.style.display = "none";
+                    alert("❌ Submission failed. Please try again.");
+                    console.error(error);
+                });
+        });
+    </script>
+
+
+</body>
+
+</html>

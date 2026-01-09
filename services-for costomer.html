@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Form - BODS INFRA TECH SOLUTION</title>
+  <link rel="icon" href="logo.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* BASIC STYLE */
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img1.jpeg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    header img {
+      width: 80px;
+      height: auto;
+      margin-bottom: 15px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 10px 0;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin: 5px 0;
+      font-weight: 300;
+    }
+
+    /* FORM CONTAINER */
+    .form-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 40px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-section {
+      margin-bottom: 40px;
+    }
+
+    .form-section h2 {
+      color: #ff8c00;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #ff8c00;
+      padding-bottom: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: 'Poppins', Arial, sans-serif;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #ff8c00;
+      outline: none;
+    }
+
+    .checkbox-group,
+    .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .checkbox-group label,
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      font-weight: 400;
+      margin-bottom: 0;
+      cursor: pointer;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      margin-right: 8px;
+    }
+
+    .other-input {
+      margin-top: 10px;
+    }
+
+    .file-upload {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+
+    button[type="submit"] {
+      background: linear-gradient(45deg, #ff8c00, #ff6b35);
+      border: none;
+      padding: 15px 30px;
+      color: white;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(255, 140, 0, 0.3);
+      display: block;
+      margin: 0 auto;
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(255, 140, 0, 0.4);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #222;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .form-container {
+        padding: 20px;
+        margin: 20px;
+      }
+
+      .checkbox-group,
+      .radio-group {
+        flex-direction: column;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      nav ul {
+        gap: 10px;
+      }
+
+      nav ul li a {
+        padding: 10px 15px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <img src="logo.png" alt="BODS INFRA Logo">
+      <a href="#">BODS INFRA</a>
+    </div>
+
+      <ul class="nav-menu" id="navMenu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="owr-Property.html" class="nav-link">Property</a></li>
+            <li class="nav-item"><a href="agent-registration.html" class="nav-link">Agent</a></li>
+            <!----
+            <li class="nav-item"><a href="service.html" class="nav-link">Services</a></li>            
+            <li class="nav-item"><a href="meterials.html" class="nav-link">Meterial</a></li>
+            <li class="nav-item"><a href="technical-vehicals.html" class="nav-link">Technical Vehicles</a></li>
+---->
+            <li class="nav-item"><a href="investors.html" class="nav-link">Investors</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    <div class="hamburger" id="hamburger">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
+  <style>
+    /* --- NEW NAVIGATION CSS --- */
+    /* NAVIGATION BAR */
+    .navbar {
+      background-color: white;
+      /* White background for navigation */
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      /* Softer shadow */
+      position: sticky;
+      top: 0;
+      z-index: 1001;
+    }
+
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-logo img {
+      height: 40px;
+      /* Adjust logo size as needed */
+      margin-right: 10px;
+    }
+
+    .navbar-logo a {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ff8c00;
+      /* Orange color for the logo text */
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-item {
+      margin-left: 25px;
+    }
+
+    .nav-link {
+      color: #333;
+      /* Darker text for white background */
+      text-decoration: none;
+      font-weight: 500;
+      padding: 5px 0;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #ff8c00;
+    }
+
+    /* HAMBURGER MENU */
+    .hamburger {
+      display: none;
+      /* Hidden by default on desktop */
+      cursor: pointer;
+      font-size: 1.8rem;
+      /* Slightly larger icon */
+      color: #333;
+      /* Dark color for the icon */
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+
+      /* Mobile Navigation Styles */
+      .hamburger {
+        display: block;
+        /* Show hamburger on mobile */
+      }
+
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        /* Below the nav bar */
+        left: 0;
+        background-color: white;
+        /* White background for mobile menu */
+        border-top: 1px solid #eee;
+        /* Light border */
+        text-align: center;
+        padding: 10px 0;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        /* Shadow for dropdown */
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .nav-item {
+        margin: 10px 0;
+      }
+
+      .nav-link {
+        padding: 10px 0;
+        display: block;
+        color: #333;
+        /* Dark text on white background */
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+
+      .section-2 {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+
+      .collab-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .slideshow-container {
+        max-width: 100%;
+      }
+
+      iframe {
+        height: 250px;
+      }
+    }
+
+    @media (min-width: 700px) {
+      .section-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+
+  <script>
+    // --- NEW HAMBURGER MENU SCRIPT ---
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked (for mobile)
+    document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        navMenu.classList.remove('active');
+      }
+    }));
+  </script>
+  <!-- FORM -->
+  <div class="form-container">
+    <form action="#" method="post" enctype="multipart/form-data">
+      <!-- SECTION 1 — CUSTOMER DETAILS -->
+      <div class="form-section">
+        <h2>SECTION 1 — CUSTOMER DETAILS</h2>
+        <div class="form-group">
+          <label for="full-name">1. Full Name</label>
+          <input type="text" id="full-name" name="full-name" required>
+        </div>
+        <div class="form-group">
+          <label for="mobile">2. Mobile Number</label>
+          <input type="tel" id="mobile" name="mobile" required>
+        </div>
+        <div class="form-group">
+          <label for="whatsapp">3. WhatsApp Number (if different)</label>
+          <input type="tel" id="whatsapp" name="whatsapp">
+        </div>
+        <div class="form-group">
+          <label for="email">4. Email (optional)</label>
+          <input type="email" id="email" name="email">
+        </div>
+        <div class="form-group">
+          <label for="address">5. Location / Address</label>
+          <input type="text" id="address" name="address">
+        </div>
+        <div class="form-group">
+          <label for="city">6. City</label>
+          <select id="city" name="city">
+            <option value="">Select City</option>
+            <option value="Rourkela">Rourkela</option>
+            <option value="Udit Nagar">Udit Nagar</option>
+            <option value="Basanti Colony">Basanti Colony</option>
+            <option value="Chhend Colony">Chhend Colony</option>
+            <option value="Civil Township">Civil Township</option>
+            <option value="Koel Nagar">Koel Nagar</option>
+            <option value="Jagda">Jagda</option>
+            <option value="Bartoli">Bartoli</option>
+            <option value="Bisra">Bisra</option>
+            <option value="Rajgangpur">Rajgangpur</option>
+            <option value="Biramitrapur">Biramitrapur</option>
+            <option value="Others">Others</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- SECTION 2 — TYPE OF SERVICE REQUIRED -->
+      <div class="form-section">
+        <h2>SECTION 2 — TYPE OF SERVICE REQUIRED</h2>
+        <div class="form-group">
+          <label>7. Select Service Category</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="service-category[]" value="New Construction"> New
+              Construction</label>
+            <label><input type="checkbox" name="service-category[]" value="Repair & Renovation"> Repair &
+              Renovation</label>
+            <label><input type="checkbox" name="service-category[]" value="Demolition"> Demolition</label>
+            <label><input type="checkbox" name="service-category[]" value="Painting"> Painting</label>
+            <label><input type="checkbox" name="service-category[]" value="Flooring & Tiles"> Flooring &
+              Tiles</label>
+            <label><input type="checkbox" name="service-category[]" value="Boundary Wall"> Boundary
+              Wall</label>
+            <label><input type="checkbox" name="service-category[]" value="Electrical Work"> Electrical
+              Work</label>
+            <label><input type="checkbox" name="service-category[]" value="Plumbing Work"> Plumbing
+              Work</label>
+            <label><input type="checkbox" name="service-category[]" value="False Ceiling"> False
+              Ceiling</label>
+            <label><input type="checkbox" name="service-category[]" value="Modular Kitchen"> Modular
+              Kitchen</label>
+            <label><input type="checkbox" name="service-category[]" value="Waterproofing">
+              Waterproofing</label>
+            <label><input type="checkbox" name="service-category[]" value="Fabrication Work"> Fabrication
+              Work</label>
+            <label><input type="checkbox" name="service-category[]" value="Architect/Engineer Services">
+              Architect/Engineer Services</label>
+            <label><input type="checkbox" name="service-category[]" value="Other"> Other</label>
+          </div>
+          <input type="text" class="other-input" id="other-service" name="other-service"
+            placeholder="Specify other service" style="display: none;">
+        </div>
+      </div>
+
+      <!-- SECTION 3 — PROJECT DETAILS -->
+      <div class="form-section">
+        <h2>SECTION 3 — PROJECT DETAILS</h2>
+        <div class="form-group">
+          <label>8. Property Type</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="property-type[]" value="Residential"> Residential</label>
+            <label><input type="checkbox" name="property-type[]" value="Commercial"> Commercial</label>
+            <label><input type="checkbox" name="property-type[]" value="Industrial"> Industrial</label>
+            <label><input type="checkbox" name="property-type[]" value="Institutional">
+              Institutional</label>
+            <label><input type="checkbox" name="property-type[]" value="Land"> Land</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="site-address">9. Work Site Address</label>
+          <input type="text" id="site-address" name="site-address">
+        </div>
+        <div class="form-group">
+          <label for="site-size">10. Site Size / Area</label>
+          <input type="text" id="site-size" name="site-size" placeholder="Example: 1200 sqft / 40×60 / 2BHK">
+        </div>
+        <div class="form-group">
+          <label for="budget">11. Estimated Budget (if any)</label>
+          <input type="text" id="budget" name="budget">
+        </div>
+        <div class="form-group">
+          <label>12. Timeline to Start Work</label>
+          <div class="radio-group">
+            <label><input type="radio" name="timeline" value="Immediately"> Immediately</label>
+            <label><input type="radio" name="timeline" value="Within 7 days"> Within 7 days</label>
+            <label><input type="radio" name="timeline" value="Within 15 days"> Within 15 days</label>
+            <label><input type="radio" name="timeline" value="Within 30 days"> Within 30 days</label>
+            <label><input type="radio" name="timeline" value="Just Enquiry"> Just Enquiry</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 4 — UPLOAD OPTIONS -->
+      <div class="form-section">
+        <h2>SECTION 4 — UPLOAD OPTIONS</h2>
+        <div class="form-group">
+          <label for="site-photos">13. Upload Images / Site Photos (optional)</label>
+          <input type="file" id="site-photos" name="site-photos[]" multiple class="file-upload">
+        </div>
+      </div>
+
+      <!-- SECTION 5 — PARTNER SELECTION -->
+      <div class="form-section">
+        <h2>SECTION 5 — PARTNER SELECTION</h2>
+        <div class="form-group">
+          <label>14. Preferred Service Mode</label>
+          <div class="radio-group">
+            <label><input type="radio" name="service-mode" value="Company Service"> Company Service</label>
+            <label><input type="radio" name="service-mode" value="Vendor Support"> Vendor Support</label>
+            <label><input type="radio" name="service-mode" value="Compare Both"> Compare Both</label>
+            <label><input type="radio" name="service-mode" value="Not Sure"> Not Sure</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 6 — FINAL CONFIRMATION -->
+      <div class="form-section">
+        <h2>SECTION 6 — FINAL CONFIRMATION</h2>
+        <div class="form-group">
+          <label>15. How did you hear about us?</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="hear-about[]" value="Website"> Website</label>
+            <label><input type="checkbox" name="hear-about[]" value="WhatsApp"> WhatsApp</label>
+            <label><input type="checkbox" name="hear-about[]" value="Facebook"> Facebook</label>
+            <label><input type="checkbox" name="hear-about[]" value="Instagram"> Instagram</label>
+            <label><input type="checkbox" name="hear-about[]" value="Referral"> Referral</label>
+            <label><input type="checkbox" name="hear-about[]" value="Repeat Customer"> Repeat
+              Customer</label>
+            <label><input type="checkbox" name="hear-about[]" value="Other"> Other</label>
+          </div>
+          <input type="text" class="other-input" id="other-hear" name="other-hear" placeholder="Specify other"
+            style="display: none;">
+        </div>
+        <div class="form-group">
+          <label for="additional">16. Additional Requirements</label>
+          <textarea id="additional" name="additional" rows="4"></textarea>
+        </div>
+      </div>
+
+      <button type="submit">Submit Form</button>
+    </form>
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbyZXU8b3rATeDLkEOzWgyjq71HUgVLb_s5tC0xIK2geLszu0bQ26cLsQk-SmeEqyEON/exec';
+      const form = document.forms[0];
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        // Change button text to show loading
+        const submitButton = form.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        submitButton.innerHTML = "Submitting...";
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+          .then(response => {
+            alert('Success! Your request has been submitted.');
+            submitButton.disabled = false;
+            submitButton.innerHTML = "Submit Form";
+            form.reset();
+          })
+          .catch(error => {
+            console.error('Error!', error.message);
+            alert('There was an error. Please try again.');
+            submitButton.disabled = false;
+          });
+      });
+    </script>
+  </div>
+
+  <footer>
+    © 2024 BODS INFRATECH PRIVATE LIMITED. All rights reserved.
+  </footer>
+
+  <script>
+    // Show/hide other input for service category
+    document.querySelectorAll('input[name="service-category[]"]').forEach(function (checkbox) {
+      checkbox.addEventListener('change', function () {
+        const otherInput = document.getElementById('other-service');
+        const otherChecked = document.querySelector('input[name="service-category[]"][value="Other"]').checked;
+        otherInput.style.display = otherChecked ? 'block' : 'none';
+      });
+    });
+
+    // Show/hide other input for hear about
+    document.querySelectorAll('input[name="hear-about[]"]').forEach(function (checkbox) {
+      checkbox.addEventListener('change', function () {
+        const otherInput = document.getElementById('other-hear');
+        const otherChecked = document.querySelector('input[name="hear-about[]"][value="Other"]').checked;
+        otherInput.style.display = otherChecked ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+
+</html>
